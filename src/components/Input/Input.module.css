@@ -1,0 +1,33 @@
+.input {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+.text {
+  color: var(--color-text);
+}
+
+.text--contrast {
+  color: var(--color-primary);
+}
+
+.background {
+  background-color: var(--color-primary);
+}
+
+.background--contrast {
+  background-color: var(--color-text);
+}
+
+.small {
+  font-size: var(--medium);
+}
+
+.medium {
+  font-size: var(--medium);
+}
+
+.large {
+  font-size: var(--large);
+}
