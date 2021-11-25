@@ -9,16 +9,18 @@
 :root {
   /* COLORS */
   --color-text: white;
-  --background-color: #0e2438;
+  --color-background: #0e2438;
   --color-primary: #1a2f42;
   --color-secondary: #224769;
   --color-tertiary: #4be175;
   --color-tertiary-dark: #186345;
   --color-tertiary-cold: #186371;
+  --color-quaternary: #2da2f6;
+  --color-quaternary-light: #00c2ff;
 
   /* TYPOGRAPHY */
   --font-family: 'Roboto', sans-serif;
-  --small: 0.8rem;
+  --small: 0.7rem;
   --medium: 0.9rem;
   --large: 1.1rem;
 }
