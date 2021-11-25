@@ -1,14 +1,14 @@
-import ButtonElement from './Button';
+import Button from './Button';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Example/Button',
-  component: ButtonElement,
+  component: Button,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
 
 export const Small = () => (
-  <ButtonElement
+  <Button
     text="Add to Wishlist"
     color="text"
     backgroundColor="quaternary-light"
@@ -17,7 +17,7 @@ export const Small = () => (
 );
 
 export const Medium = () => (
-  <ButtonElement
+  <Button
     text="Add to Cart"
     color="text--contrast"
     backgroundColor="tertiary"
@@ -26,10 +26,5 @@ export const Medium = () => (
 );
 
 export const Large = () => (
-  <ButtonElement
-    text="EXPLORE"
-    color="text"
-    backgroundColor="primary"
-    size="large"
-  />
+  <Button text="EXPLORE" color="text" backgroundColor="primary" size="large" />
 );
