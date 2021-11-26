@@ -1,18 +1,18 @@
 import styles from './Input.module.css';
 
-type InputElementProps = {
+type InputProps = {
   placeholder: string;
   color: string;
   size: string;
   backgroundColor: string;
 };
 
-export default function InputElement({
+export default function Input({
   placeholder,
   color,
   size,
   backgroundColor,
-}: InputElementProps) {
+}: InputProps) {
   return (
     <input
       className={`${styles.input} ${styles[color]} ${styles[size]} ${styles[backgroundColor]}`}

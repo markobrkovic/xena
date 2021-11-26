@@ -1,0 +1,8 @@
+.formContainer {
+  display: grid;
+  background-color: var(--color-primary);
+  padding: 2rem;
+  text-transform: uppercase;
+  color: var(--color-text);
+  font-weight: 100;
+}

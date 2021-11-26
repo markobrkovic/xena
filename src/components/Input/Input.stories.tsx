@@ -1,9 +1,9 @@
-import InputElement from './Input';
+import Input from './Input';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Example/Input',
-  component: InputElement,
+  component: Input,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
 
@@ -15,7 +15,7 @@ export const UsernameAndPassword = () => (
       placeItems: 'center',
     }}
   >
-    <InputElement
+    <Input
       placeholder="Enter username"
       color="text--contrast"
       size="medium"
@@ -32,7 +32,7 @@ export const DrowpdownSearch = () => (
       placeItems: 'center',
     }}
   >
-    <InputElement
+    <Input
       placeholder="Search by tag or name"
       color="text--contrast"
       size="large"
@@ -49,7 +49,7 @@ export const WishlistSearch = () => (
       placeItems: 'center',
     }}
   >
-    <InputElement
+    <Input
       placeholder="Search by tag or name"
       color="text"
       size="small"
