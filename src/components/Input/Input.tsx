@@ -10,12 +10,12 @@ type InputProps = {
 export default function Input({
   placeholder,
   color,
-  size,
   backgroundColor,
+  size,
 }: InputProps) {
   return (
     <input
-      className={`${styles.input} ${styles[color]} ${styles[size]} ${styles[backgroundColor]}`}
+      className={`${styles.input} ${styles[color]} ${styles[backgroundColor]}  ${styles[size]}`}
       placeholder={placeholder}
     />
   );

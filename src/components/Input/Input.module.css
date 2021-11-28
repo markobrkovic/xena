@@ -1,5 +1,4 @@
 .input {
-  margin: 1rem;
   padding: 0.5rem 1rem;
   border: none;
 }
@@ -21,7 +20,7 @@
 }
 
 .small {
-  font-size: var(--medium);
+  font-size: var(--small);
 }
 
 .medium {
