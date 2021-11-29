@@ -1,8 +1,9 @@
 import dotenv from 'dotenv';
 dotenv.config();
+import path from 'path';
 import express from 'express';
 import fetch from 'node-fetch';
-import path from 'path';
+import cors from 'cors';
 import { connectDatabase } from './utils/database';
 import { getGamesCollection } from './utils/database';
 
@@ -12,6 +13,8 @@ if (!process.env.MONGODB_URI || !process.env.CLIENT_ID || !process.env.AT) {
 
 const port = process.env.PORT || 3001;
 const app = express();
+app.use(cors({ origin: '*' }));
+
 app.use(express.json());
 
 // Serve production bundle
@@ -57,6 +60,7 @@ app.get('/api/twitchgames', async (_req, res) => {
   const response = await fetch('https://api.igdb.com/v4/games', {
     method: 'post',
     headers: options,
+    body: 'fields *; where id = 1942;',
   })
     .then((res) => res.json())
     .catch((e) => {
@@ -65,6 +69,7 @@ app.get('/api/twitchgames', async (_req, res) => {
         error: e,
       });
     });
+
   console.log('Response:', response);
   res.send(response);
 });

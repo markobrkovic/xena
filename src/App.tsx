@@ -16,6 +16,8 @@ function App() {
     //   .then((result) => setMessage(result.message));
   }, []);
 
+  //localhost:3001/api/twitchgames
+
   return (
     <>
       <p>Hello</p>
