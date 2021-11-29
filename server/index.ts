@@ -1,11 +1,12 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
+import fetch from 'node-fetch';
 import path from 'path';
 import { connectDatabase } from './utils/database';
 import { getGamesCollection } from './utils/database';
 
-if (!process.env.MONGODB_URI) {
+if (!process.env.MONGODB_URI || !process.env.CLIENT_ID || !process.env.AT) {
   throw new Error('NO MONGODB URL dotenv variable');
 }
 
@@ -20,6 +21,7 @@ app.use(express.static('dist'));
 app.get('/api/hello', (_request, response) => {
   response.json({ message: 'Hello from server' });
 });
+//
 
 app.get('/api/games', async (_request, response) => {
   const gameCollection = getGamesCollection();
@@ -29,6 +31,7 @@ app.get('/api/games', async (_request, response) => {
   response.send(allGames);
 });
 
+// Adding a game manually to MongoDB
 app.post('/api/games', async (request, response) => {
   const addGame = request.body;
   const gameCollection = getGamesCollection();
@@ -41,6 +44,32 @@ app.post('/api/games', async (request, response) => {
     response.status(404).send(addGame.name + ' is already in the database');
   }
 });
+
+// Fetching from twitch API
+
+app.get('/api/twitchgames', async (_req, res) => {
+  console.log('/twitchgames endpoint called');
+  const options = {
+    'Client-ID': `${process.env.CLIENT_ID}`,
+    Authorization: `Bearer ${process.env.AT}`,
+  };
+
+  const response = await fetch('https://api.igdb.com/v4/games', {
+    method: 'post',
+    headers: options,
+  })
+    .then((res) => res.json())
+    .catch((e) => {
+      console.error({
+        message: 'oh noes',
+        error: e,
+      });
+    });
+  console.log('Response:', response);
+  res.send(response);
+});
+
+//
 
 app.get('*', (_request, response) =>
   response.sendFile(path.join(__dirname, '../dist/index.html'))

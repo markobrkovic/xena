@@ -20,5 +20,5 @@
     "module": "commonjs",
     "noEmit": false
   },
-  "include": ["*.ts"]
+  "include": ["*.ts", "index.ts"]
 }
