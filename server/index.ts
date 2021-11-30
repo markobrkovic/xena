@@ -54,7 +54,7 @@ app.get('/api/twitchgames', async (_req, res) => {
   console.log('/twitchgames endpoint called');
   const options = {
     'Client-ID': `${process.env.CLIENT_ID}`,
-    Authorization: `Bearer ${process.env.AT}`,
+    Authorization: `Bearer ${process.env.ACCESSTOKEN}`,
   };
 
   const response = await fetch('https://api.igdb.com/v4/games', {
