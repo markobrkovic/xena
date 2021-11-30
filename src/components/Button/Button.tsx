@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Button.module.css';
 
 type ButtonProps = {
+  className?: string;
   text: string;
   color: string;
   backgroundColor: string;
