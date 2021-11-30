@@ -1,3 +1,4 @@
+import fetchGameName from '../../utils/fetchAPI';
 import styles from './Input.module.css';
 
 type InputElementProps = {

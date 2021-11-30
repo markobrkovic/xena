@@ -72,6 +72,7 @@ app.get('/api/twitchgames', async (_req, res) => {
 
   console.log('Response:', response);
   res.send(response);
+  return response;
 });
 
 //
