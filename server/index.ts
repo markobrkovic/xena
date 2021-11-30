@@ -7,7 +7,11 @@ import cors from 'cors';
 import { connectDatabase } from './utils/database';
 import { getGamesCollection } from './utils/database';
 
-if (!process.env.MONGODB_URI || !process.env.CLIENT_ID || !process.env.AT) {
+if (
+  !process.env.MONGODB_URI ||
+  !process.env.CLIENT_ID ||
+  !process.env.ACCESSTOKEN
+) {
   throw new Error('NO MONGODB URL dotenv variable');
 }
 
