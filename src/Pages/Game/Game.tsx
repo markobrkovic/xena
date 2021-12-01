@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import fetchGameName from '../../utils/fetchAPI';
 import styles from './Game.module.css';
-import Image from '../Image/Image';
+import Image from '../../components/Image/Image';
+import Button from '../../components/Button/Button';
+import Title from '../../components/Title/Title';
+import fetchGameInfo from '../../utils/fetchAPI';
 
 type GameProps = {
   name: string;
@@ -19,7 +21,7 @@ export default function Game() {
 
   useEffect(() => {
     async function getName() {
-      const gameData = await fetchGameName();
+      const gameData = await fetchGameInfo();
       setGame(gameData);
     }
 
@@ -32,7 +34,8 @@ export default function Game() {
         size="screenshot_med"
         image_id={`${game?.screenshots[0].image_id}`}
       />
-      <p className={styles.text}>{game?.storyline}</p>
+      <Title title={`${game?.name}`} />
+      <p className={styles.description}>{game?.storyline}</p>
     </>
   );
 }
