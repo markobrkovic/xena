@@ -64,7 +64,7 @@ app.get('/api/twitchgames', async (_req, res) => {
   const response = await fetch('https://api.igdb.com/v4/games', {
     method: 'post',
     headers: options,
-    body: 'fields *, cover.*, screenshots.*; where id = 1942;',
+    body: 'fields *, cover.*, screenshots.*, websites.*, release_dates.*; where id = 1942;',
   })
     .then((res) => res.json())
     .catch((e) => {

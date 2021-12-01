@@ -10,6 +10,7 @@ type ButtonProps = {
 };
 
 export default function Button({
+  className,
   text,
   color,
   backgroundColor,
@@ -17,7 +18,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`${styles.button} ${styles[color]} ${styles[backgroundColor]} ${styles[size]}`}
+      className={`${className} ${styles.button} ${styles[color]} ${styles[backgroundColor]} ${styles[size]}`}
     >
       {text}
     </button>
