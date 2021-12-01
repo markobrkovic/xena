@@ -1,4 +1,5 @@
 type ImageProps = {
+  className?: string;
   size: string;
   image_id: string;
 };

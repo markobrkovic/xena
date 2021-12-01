@@ -29,13 +29,14 @@ export default function Game() {
   }, []);
 
   return (
-    <>
+    <div className={styles.container}>
       <Image
+        className={styles.image}
         size="screenshot_med"
         image_id={`${game?.screenshots[0].image_id}`}
       />
       <Title title={`${game?.name}`} />
       <p className={styles.description}>{game?.storyline}</p>
-    </>
+    </div>
   );
 }
