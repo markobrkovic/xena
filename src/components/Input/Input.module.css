@@ -29,5 +29,5 @@
 }
 
 .large {
-  font-size: var(--font-sizelarge);
+  font-size: var(--font-size-large);
 }
