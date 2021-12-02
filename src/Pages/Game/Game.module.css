@@ -26,7 +26,7 @@
 }
 
 .gameTitle {
-  font-size: var(--large);
+  font-size: var(--font-size-large);
   margin: 0.5rem 0 0 1rem;
   grid-column: 1 / span 2;
 }
@@ -34,7 +34,7 @@
 .releaseDateTitle {
   margin: 0.5rem 0 0 1rem;
   grid-row: 2;
-  font-size: var(--medium);
+  font-size: var(--font-size-medium);
 }
 
 .releaseDate {
@@ -42,17 +42,17 @@
   grid-column: 2;
   grid-row: 2;
   font-weight: 300;
-  font-size: var(--medium);
+  font-size: var(--font-size-medium);
 }
 
 .gameSectionsTitle {
-  font-size: var(--medium);
+  font-size: var(--font-size-medium);
   text-transform: uppercase;
   margin: 1rem 1rem 0.5rem;
 }
 
 .description {
-  font-size: var(--medium);
+  font-size: var(--font-size-medium);
   font-weight: 300;
   margin: 1rem;
 }

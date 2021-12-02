@@ -20,9 +20,9 @@
 
   /* TYPOGRAPHY */
   --font-family: 'Roboto', sans-serif;
-  --small: 0.7rem;
-  --medium: 0.9rem;
-  --large: 1.1rem;
+  --font-size-small: 0.7rem;
+  --font-size-medium: 0.9rem;
+  --font-size-large: 1.1rem;
 }
 
 body {
