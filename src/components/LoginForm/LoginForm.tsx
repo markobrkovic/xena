@@ -6,7 +6,13 @@ export default function LoginForm() {
   return (
     <div className={styles.container}>
       <h1 className={styles.formHeader}>Login to XENA </h1>
-      <section className={styles.formLogin}>
+      <form
+        className={styles.formLogin}
+        onSubmit={(event) => {
+          event.preventDefault();
+          console.log('MRS');
+        }}
+      >
         <span>username</span>
         <Input
           className={styles.formLogin_input}
@@ -29,7 +35,7 @@ export default function LoginForm() {
           backgroundColor="quaternary-light"
           size="small"
         />
-      </section>
+      </form>
       <section className={styles.formRegister}>
         <span>Don&apos;t have an account?</span>
 
