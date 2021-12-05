@@ -1,6 +1,7 @@
 import styles from './Input.module.css';
 
 type InputProps = {
+  className?: string;
   placeholder: string;
   color: string;
   size: string;
@@ -8,6 +9,7 @@ type InputProps = {
 };
 
 export default function Input({
+  className,
   placeholder,
   color,
   backgroundColor,
@@ -15,7 +17,7 @@ export default function Input({
 }: InputProps) {
   return (
     <input
-      className={`${styles.input} ${styles[color]} ${styles[backgroundColor]}  ${styles[size]}`}
+      className={`${className} ${styles.input} ${styles[color]} ${styles[backgroundColor]}  ${styles[size]}`}
       placeholder={placeholder}
     />
   );

@@ -9,16 +9,18 @@ export default function LoginForm() {
       <section className={styles.formLogin}>
         <span>username</span>
         <Input
+          className={styles.formLogin_input}
           placeholder="Enter username"
           color="text--contrast"
-          size="small"
+          size="medium"
           backgroundColor="background--contrast"
         />
         <span>password</span>
         <Input
+          className={styles.formLogin_input}
           placeholder="Enter password"
           color="text--contrast"
-          size="small"
+          size="medium"
           backgroundColor="background--contrast"
         />
         <Button

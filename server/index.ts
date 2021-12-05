@@ -5,7 +5,7 @@ import express from 'express';
 import fetch from 'node-fetch';
 import cors from 'cors';
 import { connectDatabase } from './utils/database';
-import { getGamesCollection } from './utils/database';
+import { getGamesCollection, getUserCollection } from './utils/database';
 
 if (
   !process.env.MONGODB_URI ||
@@ -24,22 +24,63 @@ app.use(express.json());
 // Serve production bundle
 app.use(express.static('dist'));
 
-// Test
+// TEST
 app.get('/api/hello', (_request, response) => {
   response.json({ message: 'Hello from server' });
 });
 //
 
-app.get('/api/games', async (_request, response) => {
-  const gameCollection = getGamesCollection();
-  const cursor = await gameCollection.find();
-  const allGames = await cursor.toArray();
+// USER
 
-  response.send(allGames);
+app.get('/api/users', async (_request, response) => {
+  const userCollection = getUserCollection();
+  const cursor = userCollection.find();
+  const allUsers = await cursor.toArray();
+
+  response.send(allUsers);
+});
+
+// AUTH USER
+
+app.post('/api/login', async (request, response) => {
+  const user = request.body;
+  console.log(user);
+  const userCollection = getUserCollection();
+  const userFound = await userCollection.findOne({ username: user.username });
+
+  if (userFound) {
+    if (
+      userFound.username === user.username &&
+      userFound.password === user.password
+    ) {
+      response.send('Succesfully logged in');
+    } else {
+      response.send('Incorrect password');
+    }
+  } else {
+    response.status(404).send('Username not found');
+  }
+});
+
+// ADD USER TO DATABASE
+
+app.post('/api/register', async (request, response) => {
+  const addUser = request.body;
+  const userCollection = getUserCollection();
+  const isUserInDatabase = await userCollection.findOne({
+    username: addUser.username,
+  });
+
+  if (!isUserInDatabase) {
+    userCollection.insertOne(addUser);
+    response.send(addUser.username + ' has been successfully added');
+  } else {
+    response.status(404).send(addUser.username + ' is already in the database');
+  }
 });
 
 // Adding a game manually to MongoDB
-app.post('/api/games', async (request, response) => {
+app.post('/api/:user/games', async (request, response) => {
   const addGame = request.body;
   const gameCollection = getGamesCollection();
   const isGameInDatabase = await gameCollection.findOne({ name: addGame.name });
@@ -52,7 +93,7 @@ app.post('/api/games', async (request, response) => {
   }
 });
 
-// Fetching from twitch API
+// TWITCH API FETCH
 
 app.get('/api/twitchgames', async (_req, res) => {
   console.log('/twitchgames endpoint called');
@@ -79,11 +120,13 @@ app.get('/api/twitchgames', async (_req, res) => {
   return response;
 });
 
-//
+// REDIRECT
 
 app.get('*', (_request, response) =>
   response.sendFile(path.join(__dirname, '../dist/index.html'))
 );
+
+// MONGO CONNECTION
 
 connectDatabase(process.env.MONGODB_URI).then(() =>
   app.listen(port, () => {
