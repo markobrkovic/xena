@@ -16,6 +16,7 @@ export const UsernameAndPassword = () => (
     }}
   >
     <Input
+      onSubmit={() => console.log('nothing brotha')}
       placeholder="Enter username"
       color="text--contrast"
       size="medium"
@@ -33,6 +34,7 @@ export const DrowpdownSearch = () => (
     }}
   >
     <Input
+      onSubmit={() => console.log('nothing brotha')}
       placeholder="Search by tag or name"
       color="text--contrast"
       size="large"
@@ -50,6 +52,7 @@ export const WishlistSearch = () => (
     }}
   >
     <Input
+      onSubmit={() => console.log('nothing brotha')}
       placeholder="Search by tag or name"
       color="text"
       size="small"

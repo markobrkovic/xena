@@ -80,7 +80,7 @@ app.post('/api/register', async (request, response) => {
 });
 
 // Adding a game manually to MongoDB
-app.post('/api/:user/games', async (request, response) => {
+app.post('/api/:username/games', async (request, response) => {
   const addGame = request.body;
   const gameCollection = getGamesCollection();
   const isGameInDatabase = await gameCollection.findOne({ name: addGame.name });

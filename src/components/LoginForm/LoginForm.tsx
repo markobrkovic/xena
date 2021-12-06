@@ -1,20 +1,33 @@
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import styles from './LoginForm.module.css';
+import { useState } from 'react';
+import userAuthAPI from '../../utils/userAuthAPI';
 
 export default function LoginForm() {
+  const [username, setUserName] = useState<string | null>(null);
+  const [password, setPassword] = useState<string | null>(null);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.formHeader}>Login to XENA </h1>
       <form
         className={styles.formLogin}
-        onSubmit={(event) => {
+        onSubmit={async (event) => {
           event.preventDefault();
-          console.log('MRS');
+          console.log('called from Login');
+          setUserName(username);
+          setPassword(password);
+          console.log(username);
+          console.log(password);
+
+          const auth = await userAuthAPI({ username, password });
+          console.log(auth);
         }}
       >
         <span>username</span>
         <Input
+          onSubmit={setUserName}
           className={styles.formLogin_input}
           placeholder="Enter username"
           color="text--contrast"
@@ -23,6 +36,7 @@ export default function LoginForm() {
         />
         <span>password</span>
         <Input
+          onSubmit={setPassword}
           className={styles.formLogin_input}
           placeholder="Enter password"
           color="text--contrast"
