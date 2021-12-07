@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Button.module.css';
 
 type ButtonProps = {
+  className?: string;
   text: string;
   color: string;
   backgroundColor: string;
@@ -9,6 +10,7 @@ type ButtonProps = {
 };
 
 export default function Button({
+  className,
   text,
   color,
   backgroundColor,
@@ -16,7 +18,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`${styles.button} ${styles[color]} ${styles[backgroundColor]} ${styles[size]}`}
+      className={`${className} ${styles.button} ${styles[color]} ${styles[backgroundColor]} ${styles[size]}`}
     >
       {text}
     </button>

@@ -1,0 +1,32 @@
+.line {
+  height: 2px;
+}
+
+.half {
+  width: 50%;
+}
+
+.start {
+  background: linear-gradient(
+    to right,
+    var(--color-text) 10%,
+    var(--color-background)
+  );
+}
+
+.middle {
+  background: linear-gradient(
+    to right,
+    var(--color-background),
+    var(--color-text) 50%,
+    var(--color-background)
+  );
+}
+
+.end {
+  background: linear-gradient(
+    to left,
+    var(--color-text) 10%,
+    var(--color-background)
+  );
+}
