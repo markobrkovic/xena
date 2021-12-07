@@ -43,6 +43,7 @@ app.get('/api/users', async (_request, response) => {
 // AUTH USER
 
 app.post('/api/login', async (request, response) => {
+  console.log('WHY AM I NOT BEING CALLED');
   const user = request.body;
   console.log(user);
   const userCollection = getUserCollection();

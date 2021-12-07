@@ -5,8 +5,8 @@ import { useState } from 'react';
 import userAuthAPI from '../../utils/userAuthAPI';
 
 export default function LoginForm() {
-  const [username, setUserName] = useState<string | null>(null);
-  const [password, setPassword] = useState<string | null>(null);
+  const [username, setUserName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   return (
     <div className={styles.container}>
@@ -15,14 +15,13 @@ export default function LoginForm() {
         className={styles.formLogin}
         onSubmit={async (event) => {
           event.preventDefault();
-          console.log('called from Login');
-          setUserName(username);
-          setPassword(password);
-          console.log(username);
-          console.log(password);
-
-          const auth = await userAuthAPI({ username, password });
-          console.log(auth);
+          console.log({ username, password });
+          if (username != null && password != null) {
+            const auth = await userAuthAPI({ username, password });
+            console.log(auth);
+          } else {
+            console.log('Nope');
+          }
         }}
       >
         <span>username</span>
