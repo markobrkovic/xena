@@ -1,6 +1,6 @@
-.gameContainer {
+.featuredGameContainer {
   display: grid;
-  margin: 1rem;
+  margin: 1rem 0;
   justify-content: center;
   background: linear-gradient(
     to left,
@@ -21,12 +21,6 @@
   position: absolute;
   top: 0.1rem;
   background-color: var(--color-background);
-}
-
-.genre {
-  margin: 0.5rem 1rem 0;
-  font-size: var(--font-size-medium);
-  color: var(--color-tertiary);
 }
 
 .description {

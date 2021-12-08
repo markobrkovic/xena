@@ -3,6 +3,10 @@
   border: none;
 }
 
+.transparent {
+  background: rgb(0 0 0 / 0%);
+}
+
 .text {
   color: var(--color-text);
 }

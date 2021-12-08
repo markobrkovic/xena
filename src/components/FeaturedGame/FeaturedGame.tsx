@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import styles from './Game.module.css';
+import styles from './FeaturedGame.module.css';
 import Image from '../Image/Image';
 import Title from '../Title/Title';
 import fetchGameInfo from '../../utils/fetchAPI';
 import Line from '../design-components/Line/Line';
 import Button from '../Button/Button';
 
-type GameProps = {
+type FeaturedGameProps = {
   name: string;
   category: string;
   screenshots: [
@@ -20,11 +20,11 @@ type GameProps = {
     }
   ];
   storyline: string;
-  genres: [{ name: string }];
+  summary: string;
 };
 
-export default function Game() {
-  const [game, setGame] = useState<null | GameProps>(null);
+export default function FeaturedGame() {
+  const [game, setGame] = useState<null | FeaturedGameProps>(null);
 
   useEffect(() => {
     async function getName() {
@@ -36,7 +36,7 @@ export default function Game() {
   }, []);
 
   return (
-    <section className={styles.gameContainer}>
+    <section className={styles.featuredGameContainer}>
       <div>
         <Image
           className={styles.image}
@@ -50,8 +50,7 @@ export default function Game() {
           weight="light"
         />
       </div>
-      <p className={styles.genre}>{game?.genres[0].name}</p>
-      <p className={styles.description}>{game?.storyline.slice(0, 114)}...</p>
+      <p className={styles.description}>{game?.summary}</p>
       <Line
         className={styles.lineOne}
         width="half"
@@ -59,7 +58,7 @@ export default function Game() {
       />
       <Button
         className={styles.moreInfoBtn}
-        text="See more"
+        text="More Info"
         color="text"
         backgroundColor="transparent"
         size="medium"

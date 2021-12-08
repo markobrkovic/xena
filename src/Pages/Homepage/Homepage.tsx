@@ -1,5 +1,7 @@
 import Button from '../../components/Button/Button';
+import FeaturedGame from '../../components/FeaturedGame/FeaturedGame';
 import fetchGameInfo from '../../utils/fetchAPI';
+import styles from './Homepage.module.css';
 
 export default function Homepage(): JSX.Element {
   const game = fetchGameInfo();
@@ -8,11 +10,13 @@ export default function Homepage(): JSX.Element {
   return (
     <>
       <Button
-        text="Add to Cart"
-        color="text--contrast"
-        backgroundColor="tertiary"
+        className={styles.goBackButton}
+        text="Go Back"
+        color="text"
+        backgroundColor="primary"
         size="medium"
       />
+      <FeaturedGame />
     </>
   );
 }
