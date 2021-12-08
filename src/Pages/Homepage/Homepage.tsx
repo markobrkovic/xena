@@ -1,8 +1,8 @@
-import Button from '../components/Button/Button';
-import { fetchGames } from '../utils/fetchAPI';
+import Button from '../../components/Button/Button';
+import fetchGameInfo from '../../utils/fetchAPI';
 
 export default function Homepage(): JSX.Element {
-  const game = fetchGames();
+  const game = fetchGameInfo();
   console.log(game);
 
   return (

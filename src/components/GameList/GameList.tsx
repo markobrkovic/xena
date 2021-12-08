@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import styles from './Game.module.css';
-import Image from '../../components/Image/Image';
-import Button from '../../components/Button/Button';
-import Title from '../../components/Title/Title';
+import styles from './GameList.module.css';
+import Image from '../Image/Image';
+import Button from '../Button/Button';
+import Title from '../Title/Title';
 import fetchGameInfo from '../../utils/fetchAPI';
-import Line from '../../components/design-components/Line/Line';
+import Line from '../design-components/Line/Line';
 
 type GameProps = {
   name: string;
@@ -22,7 +22,7 @@ type GameProps = {
   storyline: string;
 };
 
-export default function Game() {
+export default function GameList() {
   const [game, setGame] = useState<null | GameProps>(null);
 
   useEffect(() => {

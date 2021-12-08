@@ -1,0 +1,58 @@
+.container {
+  width: 100%;
+}
+
+.backButton {
+  margin: 1rem 0;
+}
+
+.gameOverview {
+  background: linear-gradient(
+    to left,
+    var(--color-secondary),
+    var(--color-background)
+  );
+  padding: 0 0 1rem;
+}
+
+.image {
+  max-width: 100%;
+}
+
+.gameInfoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.gameTitle {
+  font-size: var(--font-size-large);
+  margin: 0.5rem 0 0 1rem;
+  grid-column: 1 / span 2;
+}
+
+.releaseDateTitle {
+  margin: 0.5rem 0 0 1rem;
+  grid-row: 2;
+  font-size: var(--font-size-medium);
+}
+
+.releaseDate {
+  margin-top: 0.5rem;
+  grid-column: 2;
+  grid-row: 2;
+  font-weight: 300;
+  font-size: var(--font-size-medium);
+}
+
+.gameSectionsTitle {
+  font-size: var(--font-size-medium);
+  text-transform: uppercase;
+  margin: 1rem 1rem 0.5rem;
+  grid-column: 1;
+}
+
+.description {
+  font-size: var(--font-size-medium);
+  font-weight: 300;
+  margin: 1rem;
+}
