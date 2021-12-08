@@ -35,6 +35,16 @@ export default function FeaturedGame() {
     getName();
   }, []);
 
+  let summary;
+
+  if (game?.storyline) {
+    summary = <p className={styles.description}>{game?.storyline}</p>;
+  } else if (game?.summary) {
+    summary = <p className={styles.description}>{game?.summary}</p>;
+  } else {
+    summary = <p className={styles.description}>{'No story'}</p>;
+  }
+
   return (
     <section className={styles.featuredGameContainer}>
       <div>
@@ -50,7 +60,7 @@ export default function FeaturedGame() {
           weight="light"
         />
       </div>
-      <p className={styles.description}>{game?.summary}</p>
+      {summary}
       <Line
         className={styles.lineOne}
         width="half"

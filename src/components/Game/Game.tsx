@@ -3,7 +3,6 @@ import styles from './Game.module.css';
 import Image from '../Image/Image';
 import Title from '../Title/Title';
 import fetchGameInfo from '../../utils/fetchAPI';
-import Line from '../design-components/Line/Line';
 import Button from '../Button/Button';
 
 type GameProps = {
@@ -20,6 +19,7 @@ type GameProps = {
     }
   ];
   storyline: string;
+  summary: string;
   genres: [{ name: string }];
 };
 
@@ -34,6 +34,16 @@ export default function Game() {
 
     getName();
   }, []);
+
+  let summary;
+
+  if (game?.storyline) {
+    summary = <p className={styles.description}>{game?.storyline}</p>;
+  } else if (game?.summary) {
+    summary = <p className={styles.description}>{game?.summary}</p>;
+  } else {
+    summary = <p className={styles.description}>{'No story'}</p>;
+  }
 
   return (
     <section className={styles.gameContainer}>
@@ -51,12 +61,7 @@ export default function Game() {
         />
       </div>
       <p className={styles.genre}>{game?.genres[0].name}</p>
-      <p className={styles.description}>{game?.storyline.slice(0, 114)}...</p>
-      <Line
-        className={styles.lineOne}
-        width="half"
-        highestOpacityPoint="middle--secondary"
-      />
+      {summary}
       <Button
         className={styles.moreInfoBtn}
         text="See more"

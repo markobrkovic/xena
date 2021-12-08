@@ -2,6 +2,7 @@
   display: grid;
   margin: 1rem 0;
   justify-content: center;
+  width: fit-content;
   background: linear-gradient(
     to left,
     var(--color-secondary),

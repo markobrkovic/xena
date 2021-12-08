@@ -2,6 +2,7 @@
   display: grid;
   margin: 1rem;
   justify-content: center;
+  width: fit-content;
   background: linear-gradient(
     to left,
     var(--color-secondary),
@@ -24,16 +25,18 @@
 }
 
 .genre {
-  margin: 0.5rem 1rem 0;
+  margin: 0.5rem 1rem;
+  width: fit-content;
+  padding: 0.2rem 0.6rem;
   font-size: var(--font-size-medium);
-  color: var(--color-tertiary);
+  background-color: var(--color-quaternary);
 }
 
 .description {
   font-size: var(--font-size-medium);
   font-weight: 300;
   text-align: center;
-  margin: 1rem 2rem;
+  margin: 1rem 2rem 0;
   max-width: 30rem;
 }
 
