@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import LoginForm from './components/LoginForm/LoginForm';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+      <LoginForm />
       <p>Hello</p>
       <p>{message}</p>
     </>

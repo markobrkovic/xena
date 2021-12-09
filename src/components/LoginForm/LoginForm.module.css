@@ -1,0 +1,35 @@
+.container {
+  background-color: var(--color-primary);
+  padding: 1rem 2rem;
+  margin: 1rem;
+  text-transform: uppercase;
+  color: var(--color-text);
+  font-weight: 100;
+  max-width: 680px;
+  text-align: center;
+}
+
+.formHeader {
+  font-weight: 100;
+  margin: 0;
+}
+
+.formLogin {
+  display: grid;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.formLogin_input {
+  padding: 0.3rem 0.8rem;
+}
+
+.formLogin input::placeholder {
+  text-align: center;
+}
+
+.formRegister {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+}
