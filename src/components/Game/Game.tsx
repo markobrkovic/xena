@@ -38,9 +38,13 @@ export default function Game() {
   let summary;
 
   if (game?.storyline) {
-    summary = <p className={styles.description}>{game?.storyline}</p>;
+    summary = (
+      <p className={styles.description}>{game?.storyline.slice(0, 100)}...</p>
+    );
   } else if (game?.summary) {
-    summary = <p className={styles.description}>{game?.summary}</p>;
+    summary = (
+      <p className={styles.description}>{game?.summary.slice(0, 100)}...</p>
+    );
   } else {
     summary = <p className={styles.description}>{'No story'}</p>;
   }

@@ -20,6 +20,7 @@ type GameProps = {
     }
   ];
   storyline: string;
+  summary: string;
 };
 
 export default function GameInfo() {
@@ -33,6 +34,16 @@ export default function GameInfo() {
 
     getName();
   }, []);
+
+  let summary;
+
+  if (game?.storyline) {
+    summary = <p className={styles.description}>{game?.storyline}</p>;
+  } else if (game?.summary) {
+    summary = <p className={styles.description}>{game?.summary}</p>;
+  } else {
+    summary = <p className={styles.description}>{'No story'}</p>;
+  }
 
   return (
     <div className={styles.container}>
@@ -72,7 +83,7 @@ export default function GameInfo() {
         weight="thin"
       />
       <Line width="half" highestOpacityPoint="start" />
-      <p className={styles.description}>{game?.storyline}</p>
+      {summary}
     </div>
   );
 }
