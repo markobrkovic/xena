@@ -4,7 +4,7 @@ import fetchGameInfo from '../../utils/fetchAPI';
 import styles from './Homepage.module.css';
 
 export default function Homepage(): JSX.Element {
-  const game = fetchGameInfo();
+  const game = fetchGameInfo('1942');
   console.log(game);
 
   return (

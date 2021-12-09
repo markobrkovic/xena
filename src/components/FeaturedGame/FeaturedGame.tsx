@@ -28,7 +28,8 @@ export default function FeaturedGame() {
 
   useEffect(() => {
     async function getName() {
-      const gameData = await fetchGameInfo();
+      const gameData = await fetchGameInfo('1942');
+      console.log(gameData);
       setGame(gameData);
     }
 

@@ -28,7 +28,7 @@ export default function GameInfo() {
 
   useEffect(() => {
     async function getName() {
-      const gameData = await fetchGameInfo();
+      const gameData = await fetchGameInfo('1942');
       setGame(gameData);
     }
 

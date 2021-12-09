@@ -7,7 +7,6 @@ import Button from '../Button/Button';
 
 type GameProps = {
   name: string;
-  category: string;
   screenshots: [
     {
       image_id: string;
