@@ -1,12 +1,12 @@
 export default async function fetchGameInfo(id: string) {
-  console.log('MRS');
+  console.log('TEST');
   console.log(id);
   const response = await fetch('/api/twitchgames', {
     method: 'post',
-    body: id,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id }),
   });
   const body = await response.json();
   console.log(body);
-
-  if (response) return body[0];
+  return body[0];
 }

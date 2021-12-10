@@ -1,5 +1,6 @@
 import Button from '../../components/Button/Button';
 import FeaturedGame from '../../components/FeaturedGame/FeaturedGame';
+import Game from '../../components/Game/Game';
 import fetchGameInfo from '../../utils/fetchAPI';
 import styles from './Homepage.module.css';
 
@@ -16,7 +17,7 @@ export default function Homepage(): JSX.Element {
         backgroundColor="primary"
         size="medium"
       />
-      <FeaturedGame />
+      <Game />
     </>
   );
 }

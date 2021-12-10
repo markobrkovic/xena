@@ -69,7 +69,7 @@ export default function FeaturedGame() {
       />
       <Button
         className={styles.moreInfoBtn}
-        text="More Info"
+        text="See more"
         color="text"
         backgroundColor="transparent"
         size="medium"
