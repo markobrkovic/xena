@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './FeaturedGame.module.css';
 import Image from '../Image/Image';
 import Title from '../Title/Title';
-import fetchGameInfo from '../../utils/fetchAPI';
+import fetchGameInfo from '../../utils/fetchGame';
 import Line from '../design-components/Line/Line';
 import Button from '../Button/Button';
 

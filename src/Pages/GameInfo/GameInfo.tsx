@@ -3,7 +3,7 @@ import styles from './GameInfo.module.css';
 import Image from '../../components/Image/Image';
 import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
-import fetchGameInfo from '../../utils/fetchAPI';
+import fetchGameInfo from '../../utils/fetchGame';
 import Line from '../../components/design-components/Line/Line';
 
 type GameProps = {

@@ -12,7 +12,11 @@ export default function Image({
   return (
     <img
       className={className}
-      src={`https://images.igdb.com/igdb/image/upload/t_${size}/${image_id}.jpg`}
+      src={
+        image_id.length < 50
+          ? `https://images.igdb.com/igdb/image/upload/t_${size}/${image_id}.jpg`
+          : image_id
+      }
     />
   );
 }

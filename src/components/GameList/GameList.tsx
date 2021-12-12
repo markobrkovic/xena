@@ -1,42 +1,49 @@
 import { useEffect, useState } from 'react';
 import styles from './GameList.module.css';
-import Image from '../Image/Image';
-import Button from '../Button/Button';
-import Title from '../Title/Title';
-import fetchGameInfo from '../../utils/fetchAPI';
-import Line from '../design-components/Line/Line';
 import Game from '../Game/Game';
-
-type GameProps = [
-  {
-    name: string;
-    category: string;
-    screenshots: [
-      {
-        image_id: string;
-      }
-    ];
-    release_dates: [
-      {
-        y: number;
-      }
-    ];
-    storyline: string;
-    summary: string;
-  }
-];
+import { GameProps } from '../Game/Game';
+import fetchMultipleGames from '../../utils/fetchMultipleGames';
 
 export default function GameList() {
   const [games, setGames] = useState<null | GameProps[]>(null);
 
   useEffect(() => {
     async function getGames() {
-      const gameData = await fetchGameInfo('1942');
+      const gameData = await fetchMultipleGames();
       setGames(gameData);
     }
 
     getGames();
   }, []);
 
-  return <Game />;
+  let content;
+
+  if (!games) {
+    content = <p>No games</p>;
+    // } else if (search) {
+    //   const filteredgames = games?.filter((game) =>
+    //     game.name.toLowerCase().includes(search.toLowerCase())
+    //   );
+    //   content = filteredgames?.map((game) => (
+    //     <Game
+    //       key={game.key}
+    //       title={game.title}
+    //       text={game.text}
+    //     />
+    //   ));
+  } else {
+    content = games?.map((game) => (
+      <Game
+        key={game.key}
+        name={game.name}
+        screenshots={game.screenshots}
+        storyline={game.storyline}
+        summary={game.summary}
+        genres={game.genres}
+        release_dates={game.release_dates}
+      />
+    ));
+  }
+
+  return <div className={styles.container}>{content}</div>;
 }

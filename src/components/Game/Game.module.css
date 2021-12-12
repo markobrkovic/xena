@@ -1,8 +1,8 @@
 .gameContainer {
   display: grid;
   margin: 1rem;
+  max-width: 555px;
   justify-content: center;
-  width: fit-content;
   background: linear-gradient(
     to left,
     var(--color-secondary),
@@ -27,6 +27,7 @@
 .genre {
   margin: 0.5rem 1rem;
   width: fit-content;
+  height: fit-content;
   padding: 0.2rem 0.6rem;
   font-size: var(--font-size-medium);
   background-color: var(--color-quaternary);
@@ -48,4 +49,8 @@
   place-self: center;
   margin: 0.5rem;
   padding: 0.5rem 1rem;
+}
+
+.moreInfoBtn:hover {
+  cursor: pointer;
 }
