@@ -41,7 +41,7 @@ export default function Game({
 
   return (
     <section className={styles.gameContainer} key={key}>
-      <div>
+      <div className={styles.imageContainer}>
         <Image
           className={styles.image}
           size="screenshot_med"

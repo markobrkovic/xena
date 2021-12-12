@@ -2,6 +2,9 @@
   margin: 1rem 0;
 }
 
-.idk {
-  color: aquamarine;
+.headline {
+  font-size: var(--font-size-large);
+  font-weight: 100;
+  text-transform: uppercase;
+  margin: 1rem;
 }

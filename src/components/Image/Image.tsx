@@ -11,7 +11,7 @@ export default function Image({
 }: ImageProps): JSX.Element {
   return (
     <img
-      className={className}
+      className={`${className}`}
       src={
         image_id.length < 50
           ? `https://images.igdb.com/igdb/image/upload/t_${size}/${image_id}.jpg`

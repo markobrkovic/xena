@@ -1,6 +1,7 @@
 .container {
   display: grid;
   justify-content: center;
+  grid-template-rows: minmax(365px, 365px);
   width: 100%;
 }
 

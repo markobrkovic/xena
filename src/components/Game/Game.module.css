@@ -11,8 +11,13 @@
   position: relative;
 }
 
+.imageContainer {
+  overflow: hidden;
+}
+
 .image {
   max-width: 100%;
+  object-fit: cover;
 }
 
 .gameTitle {
