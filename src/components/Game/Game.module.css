@@ -1,0 +1,61 @@
+.gameContainer {
+  display: grid;
+  margin: 1rem;
+  max-width: 555px;
+  justify-content: center;
+  background: linear-gradient(
+    to left,
+    var(--color-secondary),
+    var(--color-background)
+  );
+  position: relative;
+}
+
+.imageContainer {
+  overflow: hidden;
+}
+
+.image {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.gameTitle {
+  font-size: var(--font-size-large);
+  padding: 0.5rem 1rem;
+  box-shadow: 1px 4px 4px black;
+  position: absolute;
+  top: 0.1rem;
+  background-color: var(--color-background);
+}
+
+.genre {
+  margin: 0.5rem 1rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.2rem 0.6rem;
+  font-size: var(--font-size-medium);
+  background-color: var(--color-quaternary);
+}
+
+.description {
+  font-size: var(--font-size-medium);
+  font-weight: 300;
+  text-align: center;
+  margin: 1rem 2rem 0;
+  max-width: 30rem;
+}
+
+.lineOne {
+  margin: auto;
+}
+
+.moreInfoBtn {
+  place-self: center;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.moreInfoBtn:hover {
+  cursor: pointer;
+}

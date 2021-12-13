@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import styles from './Game.module.css';
+import styles from './GameInfo.module.css';
 import Image from '../../components/Image/Image';
 import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
-import fetchGameInfo from '../../utils/fetchAPI';
+import fetchGameInfo from '../../utils/fetchGame';
 import Line from '../../components/design-components/Line/Line';
 
 type GameProps = {
@@ -20,19 +20,30 @@ type GameProps = {
     }
   ];
   storyline: string;
+  summary: string;
 };
 
-export default function Game() {
+export default function GameInfo() {
   const [game, setGame] = useState<null | GameProps>(null);
 
   useEffect(() => {
     async function getName() {
-      const gameData = await fetchGameInfo();
+      const gameData = await fetchGameInfo('1942');
       setGame(gameData);
     }
 
     getName();
   }, []);
+
+  let summary;
+
+  if (game?.storyline) {
+    summary = <p className={styles.description}>{game?.storyline}</p>;
+  } else if (game?.summary) {
+    summary = <p className={styles.description}>{game?.summary}</p>;
+  } else {
+    summary = <p className={styles.description}>{'No story'}</p>;
+  }
 
   return (
     <div className={styles.container}>
@@ -72,7 +83,7 @@ export default function Game() {
         weight="thin"
       />
       <Line width="half" highestOpacityPoint="start" />
-      <p className={styles.description}>{game?.storyline}</p>
+      {summary}
     </div>
   );
 }

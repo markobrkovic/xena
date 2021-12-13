@@ -1,0 +1,43 @@
+.featuredGameContainer {
+  display: grid;
+  margin: 1rem 0;
+  justify-content: center;
+  width: fit-content;
+  background: linear-gradient(
+    to left,
+    var(--color-secondary),
+    var(--color-background)
+  );
+  position: relative;
+}
+
+.image {
+  max-width: 100%;
+}
+
+.gameTitle {
+  font-size: var(--font-size-large);
+  padding: 0.5rem 1rem;
+  box-shadow: 1px 4px 4px black;
+  position: absolute;
+  top: 0.1rem;
+  background-color: var(--color-background);
+}
+
+.description {
+  font-size: var(--font-size-medium);
+  font-weight: 300;
+  text-align: center;
+  margin: 1rem 2rem;
+  max-width: 30rem;
+}
+
+.lineOne {
+  margin: auto;
+}
+
+.moreInfoBtn {
+  place-self: center;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+}

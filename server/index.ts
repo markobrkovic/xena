@@ -96,7 +96,9 @@ app.post('/api/:username/games', async (request, response) => {
 
 // TWITCH API FETCH
 
-app.get('/api/twitchgames', async (_req, res) => {
+// Fetching "All" Games
+
+app.post('/api/twitchgames', async (_req, res) => {
   console.log('/twitchgames endpoint called');
   const options = {
     'Client-ID': `${process.env.CLIENT_ID}`,
@@ -106,7 +108,36 @@ app.get('/api/twitchgames', async (_req, res) => {
   const response = await fetch('https://api.igdb.com/v4/games', {
     method: 'post',
     headers: options,
-    body: 'fields *, cover.*, screenshots.*, websites.*, release_dates.*; where id = 1942;',
+    body: 'fields *, genres.*, screenshots.*, websites.*, release_dates.*;',
+  })
+    .then((res) => res.json())
+    .catch((e) => {
+      console.error({
+        message: 'oh noes',
+        error: e,
+      });
+    });
+
+  console.log('ResponseEEE:', response);
+  res.send(response);
+  return response;
+});
+
+// Fetching from twitch API
+
+app.post('/api/twitchgames/game', async (req, res) => {
+  const gameId = req.body;
+  console.log(gameId);
+  console.log('/twitchgames/game endpoint called');
+  const options = {
+    'Client-ID': `${process.env.CLIENT_ID}`,
+    Authorization: `Bearer ${process.env.ACCESSTOKEN}`,
+  };
+
+  const response = await fetch('https://api.igdb.com/v4/games', {
+    method: 'post',
+    headers: options,
+    body: `fields *, genres.*, screenshots.*, websites.*, release_dates.*; where id = ${gameId.id};`,
   })
     .then((res) => res.json())
     .catch((e) => {

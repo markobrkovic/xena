@@ -23,6 +23,15 @@
   );
 }
 
+.middle--secondary {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-text) 45% 55%,
+    var(--color-secondary)
+  );
+}
+
 .end {
   background: linear-gradient(
     to left,
