@@ -17,9 +17,6 @@ export default function Homepage(): JSX.Element {
         backgroundColor="primary"
         size="medium"
       />
-      <h2 className={styles.headline}>Featured</h2>
-      <FeaturedGame />
-      <h2 className={styles.headline}>All Games</h2>
       <GameList />
     </>
   );

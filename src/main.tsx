@@ -1,11 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './global.css';
+import { render } from 'react-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
+import './global.css';
+import Homepage from './Pages/Homepage/Homepage';
+import Wishlist from './Pages/Wishlist/Wishlist';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const rootElement = document.getElementById('root');
+render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="games" element={<Homepage />} />
+      <Route path="wishlist" element={<Wishlist />} />
+    </Routes>
+  </BrowserRouter>,
+  rootElement
 );
