@@ -10,3 +10,7 @@ export async function connectDatabase(url: string) {
 export function getGamesCollection() {
   return client.db().collection('games');
 }
+
+export function getUserCollection() {
+  return client.db().collection('users');
+}

@@ -1,21 +1,28 @@
 import styles from './Input.module.css';
 
-type InputElementProps = {
+type InputProps = {
+  onSubmit: (value: string) => void;
   placeholder: string;
+  className?: string;
   color: string;
   size: string;
   backgroundColor: string;
 };
 
-export default function InputElement({
+export default function Input({
+  onSubmit,
+  className,
   placeholder,
   color,
-  size,
   backgroundColor,
-}: InputElementProps) {
+  size,
+}: InputProps) {
   return (
     <input
-      className={`${styles.input} ${styles[color]} ${styles[size]} ${styles[backgroundColor]}`}
+      onChange={(event) => {
+        onSubmit(event.target.value);
+      }}
+      className={`${className} ${styles.input} ${styles[color]} ${styles[backgroundColor]}  ${styles[size]}`}
       placeholder={placeholder}
     />
   );
