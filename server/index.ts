@@ -96,6 +96,8 @@ app.post('/api/:username/games', async (request, response) => {
 
 // TWITCH API FETCH
 
+// Fetching "All" Games
+
 app.post('/api/twitchgames', async (_req, res) => {
   console.log('/twitchgames endpoint called');
   const options = {
