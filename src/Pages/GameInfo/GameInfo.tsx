@@ -7,8 +7,8 @@ import fetchGameInfo from '../../utils/fetchGame';
 import Line from '../../components/design-components/Line/Line';
 
 type GameProps = {
+  id?: number;
   name: string;
-  category: string;
   screenshots: [
     {
       image_id: string;

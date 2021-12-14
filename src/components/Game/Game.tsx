@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 
 export type GameProps = {
   key: number;
+  id?: number;
   name: string;
   screenshots: [
     {
