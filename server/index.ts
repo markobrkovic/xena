@@ -5,7 +5,7 @@ import express from 'express';
 import fetch from 'node-fetch';
 import cors from 'cors';
 import { connectDatabase } from './utils/database';
-import { getGamesCollection, getUserCollection } from './utils/database';
+import { getUserCollection } from './utils/database';
 
 if (
   !process.env.MONGODB_URI ||
@@ -40,6 +40,23 @@ app.get('/api/users', async (_request, response) => {
   response.send(allUsers);
 });
 
+// ADD USER TO DATABASE
+
+app.post('/api/register', async (request, response) => {
+  const addUser = request.body;
+  const userCollection = getUserCollection();
+  const isUserInDatabase = await userCollection.findOne({
+    username: addUser.username,
+  });
+
+  if (!isUserInDatabase) {
+    userCollection.insertOne(addUser);
+    response.send(addUser.username + ' has been successfully added');
+  } else {
+    response.status(404).send(addUser.username + ' is already in the database');
+  }
+});
+
 // AUTH USER
 
 app.post('/api/login', async (request, response) => {
@@ -63,38 +80,27 @@ app.post('/api/login', async (request, response) => {
   }
 });
 
-// ADD USER TO DATABASE
+// Add game to user
 
-app.post('/api/register', async (request, response) => {
-  const addUser = request.body;
+app.post('/api/wishlist', async (request, response) => {
+  const user = request.body;
   const userCollection = getUserCollection();
   const isUserInDatabase = await userCollection.findOne({
-    username: addUser.username,
+    username: user.username,
   });
 
-  if (!isUserInDatabase) {
-    userCollection.insertOne(addUser);
-    response.send(addUser.username + ' has been successfully added');
+  if (isUserInDatabase) {
+    const myquery = { username: user.username };
+    const newvalues = { $set: { games: [isUserInDatabase.games + user.game] } };
+    userCollection.updateOne(myquery, newvalues, function (err, _res) {
+      if (err) throw err;
+      console.log('1 document updated');
+    });
+    response.send(user.game + ' has been successfully added');
   } else {
-    response.status(404).send(addUser.username + ' is already in the database');
+    response.status(404).send(user.game + ' is already in the database');
   }
 });
-
-// Adding a game manually to MongoDB
-app.post('/api/:username/games', async (request, response) => {
-  const addGame = request.body;
-  const gameCollection = getGamesCollection();
-  const isGameInDatabase = await gameCollection.findOne({ name: addGame.name });
-
-  if (!isGameInDatabase) {
-    gameCollection.insertOne(addGame);
-    response.send(addGame.name + ' has been successfully added');
-  } else {
-    response.status(404).send(addGame.name + ' is already in the database');
-  }
-});
-
-// TWITCH API FETCH
 
 // Fetching "All" Games
 
@@ -123,7 +129,7 @@ app.post('/api/twitchgames', async (_req, res) => {
   return response;
 });
 
-// Fetching from twitch API
+// Fetching one game from twitch API
 
 app.post('/api/twitchgames/game', async (req, res) => {
   const gameId = req.body;
