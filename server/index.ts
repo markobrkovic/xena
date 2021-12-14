@@ -92,11 +92,10 @@ app.post('/api/wishlist', async (request, response) => {
   let newvalues;
 
   if (isUserInDatabase) {
-    const games = isUserInDatabase.games;
-    games.push(user.game);
-    console.log(games);
     const myquery = { username: user.username };
     if (isUserInDatabase.games) {
+      const games = isUserInDatabase.games;
+      games.push(user.game);
       newvalues = {
         $set: { games: games },
       };
@@ -111,7 +110,9 @@ app.post('/api/wishlist', async (request, response) => {
     });
     response.send(user.game + ' has been successfully added');
   } else {
-    response.status(404).send(user.game + ' is already in the database');
+    response
+      .status(404)
+      .send('Please register and/or login to add this to your wishlist');
   }
 });
 
