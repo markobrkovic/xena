@@ -69,12 +69,18 @@ export default function GameInfo() {
           />
           <Title
             className={styles.releaseDateTitle}
-            title={'Release Date: '}
+            title={`Release Date: ${game?.release_dates[0].y}`}
             size="h4"
             weight="thin"
           />
-          <span className={styles.releaseDate}>{game?.release_dates[0].y}</span>
         </div>
+        <Button
+          className={styles.addToWishlist}
+          text="Add to Wishlist"
+          color="text"
+          backgroundColor="quaternary-light"
+          size="small"
+        />
       </section>
       <Title
         className={styles.gameSectionsTitle}

@@ -1,7 +1,7 @@
 import styles from './Input.module.css';
 
 type InputProps = {
-  onSubmit: (value: string) => void;
+  onChange: (value: string) => void;
   placeholder: string;
   className?: string;
   color: string;
@@ -10,7 +10,7 @@ type InputProps = {
 };
 
 export default function Input({
-  onSubmit,
+  onChange,
   className,
   placeholder,
   color,
@@ -20,7 +20,7 @@ export default function Input({
   return (
     <input
       onChange={(event) => {
-        onSubmit(event.target.value);
+        onChange(event.target.value);
       }}
       className={`${className} ${styles.input} ${styles[color]} ${styles[backgroundColor]}  ${styles[size]}`}
       placeholder={placeholder}

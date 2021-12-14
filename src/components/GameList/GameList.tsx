@@ -34,5 +34,9 @@ export default function GameList() {
     ));
   }
 
-  return <div className={styles.container}>{content}</div>;
+  return (
+    <div>
+      <div className={styles.container}>{content}</div>
+    </div>
+  );
 }
