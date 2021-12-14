@@ -89,9 +89,22 @@ app.post('/api/wishlist', async (request, response) => {
     username: user.username,
   });
 
+  let newvalues;
+
   if (isUserInDatabase) {
+    const games = isUserInDatabase.games;
+    games.push(user.game);
+    console.log(games);
     const myquery = { username: user.username };
-    const newvalues = { $set: { games: [isUserInDatabase.games + user.game] } };
+    if (isUserInDatabase.games) {
+      newvalues = {
+        $set: { games: games },
+      };
+    } else {
+      newvalues = {
+        $set: { games: [user.game] },
+      };
+    }
     userCollection.updateOne(myquery, newvalues, function (err, _res) {
       if (err) throw err;
       console.log('1 document updated');
