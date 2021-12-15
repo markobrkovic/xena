@@ -9,7 +9,13 @@ export default function GameList() {
 
   useEffect(() => {
     async function getGames() {
-      const gameData = await fetchMultipleGames();
+      const gameData = await fetchMultipleGames([
+        '1941',
+        '1',
+        '15',
+        '20',
+        '30',
+      ]);
       setGames(gameData);
     }
 
