@@ -3,7 +3,7 @@ import Game from '../../components/Game/Game';
 import styles from './Wishlist.module.css';
 import { GameProps } from '../../components/Game/Game';
 import fetchWishlist from '../../utils/fetchWishlist';
-import fetchWishlistGameInfo from '../../utils/fetchWishlistGameInfo';
+import fetchMultipleGames from '../../utils/fetchMultipleGames';
 
 export default function Wishlist() {
   const [games, setGames] = useState<null | GameProps[]>(null);
@@ -14,7 +14,7 @@ export default function Wishlist() {
         username: 'Marko',
       });
       console.log('this ' + userWishlist);
-      const games = await fetchWishlistGameInfo(userWishlist);
+      const games = await fetchMultipleGames(userWishlist);
       console.log(games);
       setGames(games);
     }
