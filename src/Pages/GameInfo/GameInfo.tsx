@@ -5,6 +5,7 @@ import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
 import fetchGameInfo from '../../utils/fetchGame';
 import Line from '../../components/design-components/Line/Line';
+import addToWishlist from '../../utils/addToWishlist';
 
 type GameProps = {
   id?: number;
@@ -36,6 +37,8 @@ export default function GameInfo() {
   }, []);
 
   let summary;
+  const username = 'Marko';
+  const gameId = 1942;
 
   if (game?.storyline) {
     summary = <p className={styles.description}>{game?.storyline}</p>;
@@ -74,13 +77,14 @@ export default function GameInfo() {
             weight="thin"
           />
         </div>
-        <Button
+        <button
+          onClick={async () => {
+            await addToWishlist({ username, gameId });
+          }}
           className={styles.addToWishlist}
-          text="Add to Wishlist"
-          color="text"
-          backgroundColor="quaternary-light"
-          size="small"
-        />
+        >
+          Add to Wishlist
+        </button>
       </section>
       <Title
         className={styles.gameSectionsTitle}

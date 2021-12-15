@@ -21,6 +21,5 @@ export default async function userAuthAPI({
   }
 
   const body = await response.json();
-  console.log(body);
   return body;
 }

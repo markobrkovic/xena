@@ -48,6 +48,16 @@
   position: absolute;
   right: 1rem;
   bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  text-transform: uppercase;
+  background-color: var(--color-quaternary-light);
+  font-size: var(--font-size-small);
+  color: var(--color-text);
+}
+
+.addToWishlist:hover {
+  cursor: pointer;
 }
 
 .gameSectionsTitle {

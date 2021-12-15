@@ -1,6 +1,6 @@
 type AddToWishlistProps = {
   username: string;
-  gameId: string;
+  gameId: number;
 };
 
 export default async function addToWishlist({
@@ -8,6 +8,7 @@ export default async function addToWishlist({
   gameId,
 }: AddToWishlistProps) {
   console.log('Wishlist');
+  console.log(JSON.stringify({ username, gameId }));
   const response = await fetch('/api/wishlist', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },

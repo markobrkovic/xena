@@ -62,21 +62,16 @@ app.post('/api/register', async (request, response) => {
 app.post('/api/login', async (request, response) => {
   console.log('WHY AM I NOT BEING CALLED');
   const user = request.body;
-  console.log(user);
   const userCollection = getUserCollection();
-  const userFound = await userCollection.findOne({ username: user.username });
+  const userFound = await userCollection.findOne({
+    username: user.username,
+    password: user.password,
+  });
 
   if (userFound) {
-    if (
-      userFound.username === user.username &&
-      userFound.password === user.password
-    ) {
-      response.send('Succesfully logged in');
-    } else {
-      response.send('Incorrect password');
-    }
+    response.send(userFound);
   } else {
-    response.status(404).send('Username not found');
+    response.status(404).send('Username or password incorrect');
   }
 });
 
@@ -95,20 +90,20 @@ app.post('/api/wishlist', async (request, response) => {
     const myquery = { username: user.username };
     if (isUserInDatabase.games) {
       const games = isUserInDatabase.games;
-      games.push(user.game);
+      games.push(user.gameId);
       newvalues = {
         $set: { games: games },
       };
     } else {
       newvalues = {
-        $set: { games: [user.game] },
+        $set: { games: [user.gameId] },
       };
     }
     userCollection.updateOne(myquery, newvalues, function (err, _res) {
       if (err) throw err;
       console.log('1 document updated');
     });
-    response.send(user.game + ' has been successfully added');
+    response.send(user);
   } else {
     response
       .status(404)
@@ -138,7 +133,7 @@ app.post('/api/twitchgames', async (_req, res) => {
       });
     });
 
-  console.log('ResponseEEE:', response);
+  console.log('Response:', response);
   res.send(response);
   return response;
 });
