@@ -29,7 +29,7 @@ export default function GameInfo() {
 
   useEffect(() => {
     async function getName() {
-      const gameData = await fetchGameInfo('1942');
+      const gameData = await fetchGameInfo(1942);
       setGame(gameData);
     }
 
@@ -38,7 +38,6 @@ export default function GameInfo() {
 
   let summary;
   const username = 'Marko';
-  const gameId = 1942;
 
   if (game?.storyline) {
     summary = <p className={styles.description}>{game?.storyline}</p>;
@@ -79,7 +78,7 @@ export default function GameInfo() {
         </div>
         <button
           onClick={async () => {
-            await addToWishlist({ username, gameId });
+            await addToWishlist({ username, gameId: game?.id });
           }}
           className={styles.addToWishlist}
         >

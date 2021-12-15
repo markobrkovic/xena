@@ -1,12 +1,12 @@
-type AddToWishlistProps = {
+export type WishlistProps = {
   username: string;
-  gameId: number;
+  gameId: number | undefined;
 };
 
 export default async function addToWishlist({
   username,
   gameId,
-}: AddToWishlistProps) {
+}: WishlistProps) {
   console.log('Wishlist');
   console.log(JSON.stringify({ username, gameId }));
   const response = await fetch('/api/wishlist', {

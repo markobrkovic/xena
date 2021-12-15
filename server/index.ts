@@ -60,7 +60,6 @@ app.post('/api/register', async (request, response) => {
 // AUTH USER
 
 app.post('/api/login', async (request, response) => {
-  console.log('WHY AM I NOT BEING CALLED');
   const user = request.body;
   const userCollection = getUserCollection();
   const userFound = await userCollection.findOne({
@@ -105,9 +104,22 @@ app.post('/api/wishlist', async (request, response) => {
     });
     response.send(user);
   } else {
-    response
-      .status(404)
-      .send('Please register and/or login to add this to your wishlist');
+    response.status(404).send(JSON.stringify('You are not logged in'));
+  }
+});
+
+// Fetch Games for user's Wishlist
+
+app.post('/api/wishlist/library', async (request, response) => {
+  const user = request.body;
+  const userCollection = getUserCollection();
+  const isUserInDatabase = await userCollection.findOne({
+    username: user.username,
+  });
+  if (isUserInDatabase && isUserInDatabase.games) {
+    response.send(isUserInDatabase.games);
+  } else {
+    response.status(404).send(user);
   }
 });
 
