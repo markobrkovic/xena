@@ -1,3 +1,9 @@
 .container {
-  width: 100%;
+  text-align: center;
+}
+
+.pageTitle {
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: var(--font-size-large);
 }

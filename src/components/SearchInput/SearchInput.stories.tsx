@@ -6,4 +6,6 @@ export default {
   title: 'Components/SearchInput',
 };
 
-export const Default = () => <SearchInput onSearch={() => alert('daa')} />;
+export const Default = () => (
+  <SearchInput onSearch={() => console.log('mrs')} />
+);

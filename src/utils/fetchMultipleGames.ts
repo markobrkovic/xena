@@ -1,5 +1,6 @@
-export default async function fetchGameInfo() {
+export default async function fetchMultipleGames() {
   console.log('TEST2');
+
   const response = await fetch('/api/twitchgames', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },

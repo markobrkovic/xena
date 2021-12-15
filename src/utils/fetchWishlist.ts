@@ -1,6 +1,10 @@
-import { WishlistProps } from './addToWishlist';
+type WishlistLibraryProps = {
+  username: string;
+};
 
-export default async function getWishlist({ username }: WishlistProps) {
+export default async function fetchWishlist({
+  username,
+}: WishlistLibraryProps) {
   console.log('Wishlist');
   const response = await fetch('/api/wishlist/library', {
     method: 'post',

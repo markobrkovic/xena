@@ -74,7 +74,7 @@ app.post('/api/login', async (request, response) => {
   }
 });
 
-// Add game to user
+// Add game to use's wishlistr
 
 app.post('/api/wishlist', async (request, response) => {
   const user = request.body;
@@ -87,15 +87,18 @@ app.post('/api/wishlist', async (request, response) => {
 
   if (isUserInDatabase) {
     const myquery = { username: user.username };
-    if (isUserInDatabase.games) {
-      const games = isUserInDatabase.games;
+    const isGameInDatabase = isUserInDatabase.games.find(
+      (id: number) => id === user.gameId
+    );
+    const games = isUserInDatabase.games;
+    if (isUserInDatabase.games && !isGameInDatabase) {
       games.push(user.gameId);
       newvalues = {
         $set: { games: games },
       };
     } else {
       newvalues = {
-        $set: { games: [user.gameId] },
+        $set: { games: games },
       };
     }
     userCollection.updateOne(myquery, newvalues, function (err, _res) {

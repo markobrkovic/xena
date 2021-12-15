@@ -1,4 +1,4 @@
-export default async function fetchGameInfo(id: number) {
+export default async function fetchGameInfo(id: string) {
   console.log('TEST');
   console.log(id);
   const response = await fetch('/api/twitchgames/game', {

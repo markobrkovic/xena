@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './FeaturedGame.module.css';
 import Image from '../Image/Image';
 import Title from '../Title/Title';
-import fetchGameInfo from '../../utils/fetchGame';
+import fetchGameInfo from '../../utils/fetchGameInfo';
 import Line from '../design-components/Line/Line';
 import Button from '../Button/Button';
 
@@ -29,7 +29,6 @@ export default function FeaturedGame() {
   useEffect(() => {
     async function getName() {
       const gameData = await fetchGameInfo('1942');
-      console.log(gameData);
       setGame(gameData);
     }
 
