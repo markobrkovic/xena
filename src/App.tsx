@@ -7,6 +7,7 @@ function App() {
     <>
       <nav>
         <LoginForm />
+        <Homepage />
         <Link to="/games">Skip</Link>
       </nav>
     </>
