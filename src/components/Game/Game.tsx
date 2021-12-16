@@ -4,7 +4,6 @@ import Title from '../Title/Title';
 import Button from '../Button/Button';
 
 export type GameProps = {
-  key: number;
   id?: number;
   name: string;
   screenshots: [
@@ -23,7 +22,7 @@ export type GameProps = {
 };
 
 export default function Game({
-  key,
+  id,
   name,
   screenshots,
   storyline,
@@ -41,7 +40,7 @@ export default function Game({
   }
 
   return (
-    <section className={styles.gameContainer} key={key}>
+    <section className={styles.gameContainer}>
       <div className={styles.imageContainer}>
         <Image
           className={styles.image}

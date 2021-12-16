@@ -30,7 +30,7 @@ export default function Wishlist() {
   } else {
     content = games?.map((game) => (
       <Game
-        key={game.key}
+        key={game.id}
         name={game.name}
         screenshots={game.screenshots}
         storyline={game.storyline}

@@ -1,15 +1,23 @@
 .container {
   width: 100%;
+  padding-top: 5rem;
 }
 
 .navbar {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  align-items: center;
+  padding: 0.2rem;
+  background-color: var(--color-primary);
 }
 
 .goBack {
   position: absolute;
-  top: 0;
   left: 0;
 }
 
