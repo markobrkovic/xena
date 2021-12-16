@@ -26,7 +26,7 @@ export default function LoginForm() {
       >
         <span>username</span>
         <Input
-          onSubmit={setUserName}
+          onChange={setUserName}
           className={styles.formLogin_input}
           placeholder="Enter username"
           color="text--contrast"
@@ -35,7 +35,7 @@ export default function LoginForm() {
         />
         <span>password</span>
         <Input
-          onSubmit={setPassword}
+          onChange={setPassword}
           className={styles.formLogin_input}
           placeholder="Enter password"
           color="text--contrast"

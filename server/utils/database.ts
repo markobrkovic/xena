@@ -7,10 +7,6 @@ export async function connectDatabase(url: string) {
   await client.connect();
 }
 
-export function getGamesCollection() {
-  return client.db().collection('games');
-}
-
 export function getUserCollection() {
   return client.db().collection('users');
 }

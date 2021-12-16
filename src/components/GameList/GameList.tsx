@@ -9,7 +9,14 @@ export default function GameList() {
 
   useEffect(() => {
     async function getGames() {
-      const gameData = await fetchMultipleGames();
+      const gameData = await fetchMultipleGames([
+        '1941',
+        '1',
+        '15',
+        '20',
+        '30',
+        '40',
+      ]);
       setGames(gameData);
     }
 
@@ -23,7 +30,7 @@ export default function GameList() {
   } else {
     content = games?.map((game) => (
       <Game
-        key={game.key}
+        key={game.id}
         name={game.name}
         screenshots={game.screenshots}
         storyline={game.storyline}
@@ -34,5 +41,9 @@ export default function GameList() {
     ));
   }
 
-  return <div className={styles.container}>{content}</div>;
+  return (
+    <div>
+      <div className={styles.container}>{content}</div>
+    </div>
+  );
 }

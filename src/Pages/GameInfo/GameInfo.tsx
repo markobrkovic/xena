@@ -3,12 +3,13 @@ import styles from './GameInfo.module.css';
 import Image from '../../components/Image/Image';
 import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
-import fetchGameInfo from '../../utils/fetchGame';
+import fetchGameInfo from '../../utils/fetchGameInfo';
 import Line from '../../components/design-components/Line/Line';
+import addToWishlist from '../../utils/addToWishlist';
 
 type GameProps = {
+  id?: number;
   name: string;
-  category: string;
   screenshots: [
     {
       image_id: string;
@@ -36,6 +37,7 @@ export default function GameInfo() {
   }, []);
 
   let summary;
+  const username = 'Marko';
 
   if (game?.storyline) {
     summary = <p className={styles.description}>{game?.storyline}</p>;
@@ -69,12 +71,19 @@ export default function GameInfo() {
           />
           <Title
             className={styles.releaseDateTitle}
-            title={'Release Date: '}
+            title={`Release Date: ${game?.release_dates[0].y}`}
             size="h4"
             weight="thin"
           />
-          <span className={styles.releaseDate}>{game?.release_dates[0].y}</span>
         </div>
+        <button
+          onClick={async () => {
+            await addToWishlist({ username, gameId: game?.id });
+          }}
+          className={styles.addToWishlist}
+        >
+          Add to Wishlist
+        </button>
       </section>
       <Title
         className={styles.gameSectionsTitle}

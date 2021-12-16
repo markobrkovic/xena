@@ -5,7 +5,7 @@ import express from 'express';
 import fetch from 'node-fetch';
 import cors from 'cors';
 import { connectDatabase } from './utils/database';
-import { getGamesCollection, getUserCollection } from './utils/database';
+import { getUserCollection } from './utils/database';
 
 if (
   !process.env.MONGODB_URI ||
@@ -40,29 +40,6 @@ app.get('/api/users', async (_request, response) => {
   response.send(allUsers);
 });
 
-// AUTH USER
-
-app.post('/api/login', async (request, response) => {
-  console.log('WHY AM I NOT BEING CALLED');
-  const user = request.body;
-  console.log(user);
-  const userCollection = getUserCollection();
-  const userFound = await userCollection.findOne({ username: user.username });
-
-  if (userFound) {
-    if (
-      userFound.username === user.username &&
-      userFound.password === user.password
-    ) {
-      response.send('Succesfully logged in');
-    } else {
-      response.send('Incorrect password');
-    }
-  } else {
-    response.status(404).send('Username not found');
-  }
-});
-
 // ADD USER TO DATABASE
 
 app.post('/api/register', async (request, response) => {
@@ -80,21 +57,74 @@ app.post('/api/register', async (request, response) => {
   }
 });
 
-// Adding a game manually to MongoDB
-app.post('/api/:username/games', async (request, response) => {
-  const addGame = request.body;
-  const gameCollection = getGamesCollection();
-  const isGameInDatabase = await gameCollection.findOne({ name: addGame.name });
+// AUTH USER
 
-  if (!isGameInDatabase) {
-    gameCollection.insertOne(addGame);
-    response.send(addGame.name + ' has been successfully added');
+app.post('/api/login', async (request, response) => {
+  const user = request.body;
+  const userCollection = getUserCollection();
+  const userFound = await userCollection.findOne({
+    username: user.username,
+    password: user.password,
+  });
+
+  if (userFound) {
+    response.send(userFound);
   } else {
-    response.status(404).send(addGame.name + ' is already in the database');
+    response.status(404).send('Username or password incorrect');
   }
 });
 
-// TWITCH API FETCH
+// Add game to use's wishlistr
+
+app.post('/api/wishlist', async (request, response) => {
+  const user = request.body;
+  const userCollection = getUserCollection();
+  const isUserInDatabase = await userCollection.findOne({
+    username: user.username,
+  });
+
+  let newvalues;
+
+  if (isUserInDatabase) {
+    const myquery = { username: user.username };
+    const isGameInDatabase = isUserInDatabase.games.find(
+      (id: number) => id === user.gameId
+    );
+    const games = isUserInDatabase.games;
+    if (isUserInDatabase.games && !isGameInDatabase) {
+      games.push(user.gameId);
+      newvalues = {
+        $set: { games: games },
+      };
+    } else {
+      newvalues = {
+        $set: { games: games },
+      };
+    }
+    userCollection.updateOne(myquery, newvalues, function (err, _res) {
+      if (err) throw err;
+      console.log('1 document updated');
+    });
+    response.send(user);
+  } else {
+    response.status(404).send(JSON.stringify('You are not logged in'));
+  }
+});
+
+// Fetch Games for user's Wishlist
+
+app.post('/api/wishlist/library', async (request, response) => {
+  const user = request.body;
+  const userCollection = getUserCollection();
+  const isUserInDatabase = await userCollection.findOne({
+    username: user.username,
+  });
+  if (isUserInDatabase && isUserInDatabase.games) {
+    response.send(isUserInDatabase.games);
+  } else {
+    response.status(404).send(user);
+  }
+});
 
 // Fetching "All" Games
 
@@ -118,12 +148,12 @@ app.post('/api/twitchgames', async (_req, res) => {
       });
     });
 
-  console.log('ResponseEEE:', response);
+  console.log('Response:', response);
   res.send(response);
   return response;
 });
 
-// Fetching from twitch API
+// Fetching one game from twitch API
 
 app.post('/api/twitchgames/game', async (req, res) => {
   const gameId = req.body;
