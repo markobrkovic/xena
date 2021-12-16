@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Input from '../Input/Input';
-import styles from './SearchInput.module.css';
 
 type OnSearchProps = {
   className?: string;
