@@ -22,7 +22,6 @@ export type GameProps = {
 };
 
 export default function Game({
-  id,
   name,
   screenshots,
   storyline,
