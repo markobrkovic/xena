@@ -1,9 +1,21 @@
 .container {
-  text-align: center;
+  width: 100%;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.goBack {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .pageTitle {
   text-transform: uppercase;
   font-weight: 300;
   font-size: var(--font-size-large);
+  grid-column: 2/2;
 }

@@ -4,6 +4,7 @@ import styles from './Wishlist.module.css';
 import { GameProps } from '../../components/Game/Game';
 import fetchWishlist from '../../utils/fetchWishlist';
 import fetchMultipleGames from '../../utils/fetchMultipleGames';
+import Button from '../../components/Button/Button';
 
 export default function Wishlist() {
   const [games, setGames] = useState<null | GameProps[]>(null);
@@ -42,7 +43,16 @@ export default function Wishlist() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.pageTitle}>Wishlist</h1>
+      <nav className={styles.navbar}>
+        <Button
+          className={styles.goBack}
+          text="Go Back"
+          color="text"
+          backgroundColor="primary"
+          size="medium"
+        />
+        <h1 className={styles.pageTitle}>Wishlist</h1>
+      </nav>
       {content}
     </div>
   );
