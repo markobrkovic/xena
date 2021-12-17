@@ -1,5 +1,5 @@
 type WishlistLibraryProps = {
-  username: string;
+  username: string | null;
 };
 
 export default async function fetchWishlist({

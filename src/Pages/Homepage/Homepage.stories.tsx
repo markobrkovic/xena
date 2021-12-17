@@ -1,3 +1,4 @@
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import Homepage from './Homepage';
 
 export default {
@@ -5,4 +6,10 @@ export default {
   title: 'Pages/Homepage',
 };
 
-export const Default = () => <Homepage />;
+export const Default = () => (
+  <MemoryRouter initialEntries={['/homepage']}>
+    <Routes>
+      <Route path="/homepage" element={<Homepage />} />
+    </Routes>
+  </MemoryRouter>
+);

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import styles from './GameInfo.module.css';
 import Image from '../../components/Image/Image';
-import Button from '../../components/Button/Button';
 import Title from '../../components/Title/Title';
 import fetchGameInfo from '../../utils/fetchGameInfo';
 import Line from '../../components/design-components/Line/Line';
 import addToWishlist from '../../utils/addToWishlist';
+import { useParams } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 
 type GameProps = {
   id?: number;
@@ -26,10 +27,11 @@ type GameProps = {
 
 export default function GameInfo() {
   const [game, setGame] = useState<null | GameProps>(null);
+  const { id } = useParams();
 
   useEffect(() => {
     async function getName() {
-      const gameData = await fetchGameInfo('1942');
+      const gameData = await fetchGameInfo(`${id}`);
       setGame(gameData);
     }
 
@@ -49,13 +51,7 @@ export default function GameInfo() {
 
   return (
     <div className={styles.container}>
-      <Button
-        className={styles.backButton}
-        text="Go Back"
-        color="text"
-        backgroundColor="primary"
-        size="small"
-      />
+      <Navbar title={`${game?.name.slice(0, 10)}...`} />
       <section className={styles.gameOverview}>
         <Image
           className={styles.image}

@@ -1,15 +1,6 @@
 .container {
   width: 100%;
-}
-
-.backButton {
-  margin: 1rem 0;
-}
-
-.searchInput {
-  width: 8rem;
-  margin: 1rem 4rem;
-  height: 1.4rem;
+  padding-top: 1rem;
 }
 
 .gameOverview {

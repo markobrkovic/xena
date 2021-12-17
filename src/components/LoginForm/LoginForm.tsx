@@ -3,10 +3,19 @@ import Button from '../Button/Button';
 import styles from './LoginForm.module.css';
 import { useState } from 'react';
 import userAuthAPI from '../../utils/userAuthAPI';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {
   const [username, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const navigate = useNavigate();
+
+  const setCookieFunction = (value: string) => {
+    localStorage.setItem('username', value);
+    setTimeout(() => {
+      navigate('/homepage');
+    }, 600);
+  };
 
   return (
     <div className={styles.container}>
@@ -18,7 +27,8 @@ export default function LoginForm() {
           console.log({ username, password });
           if (username != null && password != null) {
             const auth = await userAuthAPI({ username, password });
-            console.log(auth);
+            console.log('Hello ' + auth.username);
+            setCookieFunction(auth.username);
           } else {
             console.log('Nope');
           }
