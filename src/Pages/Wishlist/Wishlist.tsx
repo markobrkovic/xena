@@ -4,15 +4,16 @@ import styles from './Wishlist.module.css';
 import { GameProps } from '../../components/Game/Game';
 import fetchWishlist from '../../utils/fetchWishlist';
 import fetchMultipleGames from '../../utils/fetchMultipleGames';
-import Button from '../../components/Button/Button';
+import Navbar from '../../components/Navbar/Navbar';
 
 export default function Wishlist() {
   const [games, setGames] = useState<null | GameProps[]>(null);
+  const user = localStorage.getItem('username');
 
   useEffect(() => {
     async function getName() {
       const userWishlist = await fetchWishlist({
-        username: 'Marko',
+        username: user,
       });
       console.log('this ' + userWishlist);
       const games = await fetchMultipleGames(userWishlist);
@@ -31,6 +32,7 @@ export default function Wishlist() {
     content = games?.map((game) => (
       <Game
         key={game.id}
+        id={game.id}
         name={game.name}
         screenshots={game.screenshots}
         storyline={game.storyline}
@@ -43,16 +45,7 @@ export default function Wishlist() {
 
   return (
     <div className={styles.container}>
-      <nav className={styles.navbar}>
-        <Button
-          className={styles.goBack}
-          text="Go Back"
-          color="text"
-          backgroundColor="primary"
-          size="medium"
-        />
-        <h1 className={styles.pageTitle}>Wishlist</h1>
-      </nav>
+      <Navbar title="Wishlist" />
       {content}
     </div>
   );

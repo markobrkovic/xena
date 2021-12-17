@@ -2,6 +2,7 @@ import styles from './Game.module.css';
 import Image from '../Image/Image';
 import Title from '../Title/Title';
 import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 export type GameProps = {
   id?: number;
@@ -22,6 +23,7 @@ export type GameProps = {
 };
 
 export default function Game({
+  id,
   name,
   screenshots,
   storyline,
@@ -29,6 +31,7 @@ export default function Game({
   genres,
 }: GameProps) {
   let story;
+  const navigate = useNavigate();
 
   if (storyline) {
     story = <p className={styles.description}>{storyline.slice(0, 100)}...</p>;
@@ -62,6 +65,7 @@ export default function Game({
       </p>
       {story}
       <Button
+        onClick={() => navigate(`/game/${id}`)}
         className={styles.moreInfoBtn}
         text="See more"
         color="text"

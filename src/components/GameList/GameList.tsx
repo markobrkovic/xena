@@ -16,6 +16,8 @@ export default function GameList() {
         '20',
         '30',
         '40',
+        '50',
+        '60',
       ]);
       setGames(gameData);
     }
@@ -31,6 +33,7 @@ export default function GameList() {
     content = games?.map((game) => (
       <Game
         key={game.id}
+        id={game.id}
         name={game.name}
         screenshots={game.screenshots}
         storyline={game.storyline}
