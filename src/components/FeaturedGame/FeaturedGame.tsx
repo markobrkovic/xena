@@ -5,8 +5,10 @@ import Title from '../Title/Title';
 import fetchGameInfo from '../../utils/fetchGameInfo';
 import Line from '../design-components/Line/Line';
 import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 type FeaturedGameProps = {
+  id?: number;
   name: string;
   category: string;
   screenshots: [
@@ -35,44 +37,54 @@ export default function FeaturedGame() {
     getName();
   }, []);
 
+  const navigate = useNavigate();
   let summary;
 
   if (game?.storyline) {
-    summary = <p className={styles.description}>{game?.storyline}</p>;
+    summary = game?.storyline;
   } else if (game?.summary) {
-    summary = <p className={styles.description}>{game?.summary}</p>;
+    summary = game?.summary;
   } else {
-    summary = <p className={styles.description}>{'No story'}</p>;
+    summary = 'No story';
   }
 
-  return (
-    <section className={styles.featuredGameContainer}>
-      <div>
-        <Image
-          className={styles.image}
-          size="screenshot_med"
-          image_id={`${game?.screenshots[0].image_id}`}
+  let content;
+
+  if (!game) {
+    content = <p>Loading...</p>;
+  } else {
+    content = (
+      <section className={styles.featuredGameContainer}>
+        <div>
+          <Image
+            className={styles.image}
+            size="screenshot_med"
+            image_id={`${game?.screenshots[0].image_id}`}
+          />
+          <Title
+            className={styles.gameTitle}
+            title={`${game?.name}`}
+            size="h2"
+            weight="light"
+          />
+        </div>
+        <p className={styles.description}>{summary}</p>
+        <Line
+          className={styles.lineOne}
+          width="half"
+          highestOpacityPoint="middle--secondary"
         />
-        <Title
-          className={styles.gameTitle}
-          title={`${game?.name}`}
-          size="h2"
-          weight="light"
+        <Button
+          onClick={() => navigate(`/game/${game.id}`)}
+          className={styles.moreInfoBtn}
+          text="See more"
+          color="text"
+          backgroundColor="transparent"
+          size="medium"
         />
-      </div>
-      {summary}
-      <Line
-        className={styles.lineOne}
-        width="half"
-        highestOpacityPoint="middle--secondary"
-      />
-      <Button
-        className={styles.moreInfoBtn}
-        text="See more"
-        color="text"
-        backgroundColor="transparent"
-        size="medium"
-      />
-    </section>
-  );
+      </section>
+    );
+  }
+
+  return <>{content}</>;
 }

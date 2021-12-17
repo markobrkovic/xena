@@ -27,7 +27,7 @@ export default function Wishlist() {
   let content;
 
   if (!games) {
-    content = <p>No games</p>;
+    content = <p>Loading...</p>;
   } else {
     content = games?.map((game) => (
       <Game
