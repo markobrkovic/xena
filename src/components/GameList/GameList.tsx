@@ -31,6 +31,7 @@ export default function GameList() {
     content = games?.map((game) => (
       <Game
         key={game.id}
+        id={game.id}
         name={game.name}
         screenshots={game.screenshots}
         storyline={game.storyline}
