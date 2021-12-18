@@ -1,5 +1,5 @@
 export type WishlistProps = {
-  username: string;
+  username: string | null;
   gameId: number | undefined;
 };
 

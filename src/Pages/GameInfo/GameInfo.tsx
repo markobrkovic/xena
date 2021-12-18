@@ -18,30 +18,33 @@ type GameProps = {
   ];
   release_dates: [
     {
-      y: number;
+      human: string;
     }
   ];
   storyline: string;
   summary: string;
+  genres: [{ name: string }];
 };
 
 export default function GameInfo() {
   const [game, setGame] = useState<null | GameProps>(null);
+  const [isWishlist, setIsWishlist] = useState(true);
+  const [buttonStyle, setButtonStyle] = useState('addToWishlist');
+  const [buttonText, setButtonText] = useState('Add to Wishlist');
   const { id } = useParams();
+  const username = localStorage.getItem('username');
+
+  let summary;
+  let content;
 
   useEffect(() => {
-    async function getName() {
+    async function getGame() {
       const gameData = await fetchGameInfo(`${id}`);
       setGame(gameData);
     }
 
-    getName();
-  }, []);
-
-  let summary;
-  const username = 'Marko';
-
-  let content;
+    getGame();
+  }, [isWishlist]);
 
   if (!game) {
     content = <p className={styles.loading}>Loading...</p>;
@@ -55,6 +58,9 @@ export default function GameInfo() {
     }
     content = (
       <>
+        <span className={styles.genre}>
+          {game?.genres ? game?.genres[0].name : 'No genre available'}
+        </span>
         <section className={styles.gameOverview}>
           <Image
             className={styles.image}
@@ -70,18 +76,26 @@ export default function GameInfo() {
             />
             <Title
               className={styles.releaseDateTitle}
-              title={`Release Date: ${game?.release_dates[0].y}`}
+              title={`Release Date: ${game?.release_dates[0].human}`}
               size="h4"
               weight="thin"
             />
           </div>
           <button
             onClick={async () => {
-              await addToWishlist({ username, gameId: game?.id });
+              setIsWishlist(isWishlist ? false : true);
+              if (!isWishlist) {
+                setButtonStyle('addToWishlist');
+                setButtonText('Add to Wishlist');
+              } else {
+                setButtonStyle('removeFromWishlist');
+                setButtonText('Remove from Wishlist');
+              }
+              await addToWishlist({ username: username, gameId: game?.id });
             }}
-            className={styles.addToWishlist}
+            className={`${styles[buttonStyle]}`}
           >
-            Add to Wishlist
+            {buttonText}
           </button>
         </section>
         <Title

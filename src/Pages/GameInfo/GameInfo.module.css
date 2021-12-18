@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  padding-top: 6rem;
+  padding-top: 6.5rem;
   display: grid;
 }
 
@@ -43,6 +43,16 @@
   font-size: var(--font-size-medium);
 }
 
+.genre {
+  margin: 0.5rem 1rem;
+  position: absolute;
+  right: 0;
+  top: 4rem;
+  padding: 0.2rem 0.6rem;
+  font-size: var(--font-size-medium);
+  background-color: var(--color-quaternary);
+}
+
 .addToWishlist {
   position: absolute;
   right: 1rem;
@@ -51,6 +61,18 @@
   border: none;
   text-transform: uppercase;
   background-color: var(--color-quaternary-light);
+  font-size: var(--font-size-small);
+  color: var(--color-text);
+}
+
+.removeFromWishlist {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  text-transform: uppercase;
+  background-color: tomato;
   font-size: var(--font-size-small);
   color: var(--color-text);
 }
