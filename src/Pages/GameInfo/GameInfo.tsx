@@ -18,77 +18,104 @@ type GameProps = {
   ];
   release_dates: [
     {
-      y: number;
+      human: string;
     }
   ];
   storyline: string;
   summary: string;
+  genres: [{ name: string }];
 };
 
 export default function GameInfo() {
   const [game, setGame] = useState<null | GameProps>(null);
+  const [isWishlist, setIsWishlist] = useState(true);
+  const [buttonStyle, setButtonStyle] = useState('addToWishlist');
+  const [buttonText, setButtonText] = useState('Add to Wishlist');
   const { id } = useParams();
+  const username = localStorage.getItem('username');
+
+  let summary;
+  let content;
 
   useEffect(() => {
-    async function getName() {
+    async function getGame() {
       const gameData = await fetchGameInfo(`${id}`);
       setGame(gameData);
     }
 
-    getName();
-  }, []);
+    getGame();
+  }, [isWishlist]);
 
-  let summary;
-  const username = 'Marko';
-
-  if (game?.storyline) {
-    summary = <p className={styles.description}>{game?.storyline}</p>;
-  } else if (game?.summary) {
-    summary = <p className={styles.description}>{game?.summary}</p>;
+  if (!game) {
+    content = <p className={styles.loading}>Loading...</p>;
   } else {
-    summary = <p className={styles.description}>{'No story'}</p>;
+    if (game?.storyline) {
+      summary = <p className={styles.description}>{game?.storyline}</p>;
+    } else if (game?.summary) {
+      summary = <p className={styles.description}>{game?.summary}</p>;
+    } else {
+      summary = <p className={styles.description}>{'No story'}</p>;
+    }
+    content = (
+      <>
+        <span className={styles.genre}>
+          {game?.genres ? game?.genres[0].name : 'No genre available'}
+        </span>
+        <section className={styles.gameOverview}>
+          <Image
+            className={styles.image}
+            size="screenshot_med"
+            image_id={`${game?.screenshots[0].image_id}`}
+          />
+          <div className={styles.gameInfoContainer}>
+            <Title
+              className={styles.gameTitle}
+              title={`${game?.name}`}
+              size="h2"
+              weight="light"
+            />
+            <Title
+              className={styles.releaseDateTitle}
+              title={`Release Date: ${game?.release_dates[0].human}`}
+              size="h4"
+              weight="thin"
+            />
+          </div>
+          <button
+            onClick={async () => {
+              setIsWishlist(isWishlist ? false : true);
+              if (!isWishlist) {
+                setButtonStyle('addToWishlist');
+                setButtonText('Add to Wishlist');
+              } else {
+                setButtonStyle('removeFromWishlist');
+                setButtonText('Remove from Wishlist');
+              }
+              await addToWishlist({ username: username, gameId: game?.id });
+            }}
+            className={`${styles[buttonStyle]}`}
+          >
+            {buttonText}
+          </button>
+        </section>
+        <Title
+          className={styles.gameSectionsTitle}
+          title="About this game"
+          size="h3"
+          weight="thin"
+        />
+        <Line width="half" highestOpacityPoint="start" />
+        {summary}
+      </>
+    );
   }
 
   return (
-    <div className={styles.container}>
-      <Navbar title={`${game?.name.slice(0, 10)}...`} />
-      <section className={styles.gameOverview}>
-        <Image
-          className={styles.image}
-          size="screenshot_med"
-          image_id={`${game?.screenshots[0].image_id}`}
-        />
-        <div className={styles.gameInfoContainer}>
-          <Title
-            className={styles.gameTitle}
-            title={`${game?.name}`}
-            size="h2"
-            weight="light"
-          />
-          <Title
-            className={styles.releaseDateTitle}
-            title={`Release Date: ${game?.release_dates[0].y}`}
-            size="h4"
-            weight="thin"
-          />
-        </div>
-        <button
-          onClick={async () => {
-            await addToWishlist({ username, gameId: game?.id });
-          }}
-          className={styles.addToWishlist}
-        >
-          Add to Wishlist
-        </button>
-      </section>
-      <Title
-        className={styles.gameSectionsTitle}
-        title="About this game"
-        size="h3"
-        weight="thin"
-      />
-      <Line width="half" highestOpacityPoint="start" />
-      {summary}
-    </div>
+    <>
+      <div className={styles.container}>
+        <Navbar title={`${game ? game.name.slice(0, 10) : 'Loading'}...`} />
+        {content}
+      </div>
+    </>
   );
 }

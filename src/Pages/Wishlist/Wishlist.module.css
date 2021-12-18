@@ -1,4 +1,12 @@
 .container {
   width: 100%;
   padding-top: 5rem;
+  display: grid;
+}
+
+.loading {
+  display: inline-block;
+  position: absolute;
+  align-self: center;
+  justify-self: center;
 }

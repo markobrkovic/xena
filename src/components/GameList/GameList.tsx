@@ -16,8 +16,6 @@ export default function GameList() {
         '20',
         '30',
         '40',
-        '50',
-        '60',
       ]);
       setGames(gameData);
     }
@@ -28,7 +26,7 @@ export default function GameList() {
   let content;
 
   if (!games) {
-    content = <p>No games</p>;
+    content = <p>Loading...</p>;
   } else {
     content = games?.map((game) => (
       <Game
