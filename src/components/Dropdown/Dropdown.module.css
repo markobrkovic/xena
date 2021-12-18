@@ -18,6 +18,7 @@
 .dropdown__background {
   height: 3rem;
   width: 3rem;
+  border-radius: 50%;
   position: fixed;
   top: 0.3rem;
   right: 0.2rem;
@@ -40,7 +41,7 @@
 .dropdown__list {
   position: absolute;
   top: 30%;
-  left: 46%;
+  left: 45%;
   transform: translate(-50%, -50%);
   list-style: none;
   text-align: center;

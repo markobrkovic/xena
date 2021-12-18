@@ -4,7 +4,6 @@ import Navbar from '../../components/Navbar/Navbar';
 import styles from './Homepage.module.css';
 
 export default function Homepage(): JSX.Element {
-  let navbar;
   let headlineOne;
   let headlineTwo;
 

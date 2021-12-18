@@ -27,7 +27,7 @@ export default function Wishlist() {
   let content;
 
   if (!games) {
-    content = <p>Loading...</p>;
+    content = <p className={styles.loading}>Loading...</p>;
   } else {
     content = games?.map((game) => (
       <Game

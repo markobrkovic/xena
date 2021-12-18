@@ -38,12 +38,26 @@ export default function FeaturedGame() {
   }, []);
 
   const navigate = useNavigate();
-  let summary;
+  let story;
   let content;
 
   if (!game) {
     console.log('Fetching...');
   } else {
+    if (game?.storyline) {
+      story = (
+        <p className={styles.description}>
+          {game?.storyline.length > 100
+            ? game?.storyline.slice(0, 100)
+            : game?.storyline}
+          ...
+        </p>
+      );
+    } else if (game?.summary) {
+      story = <p className={styles.description}>{game?.summary}...</p>;
+    } else {
+      story = <p className={styles.description}>{'No story'}</p>;
+    }
     content = (
       <section className={styles.featuredGameContainer}>
         <div>
@@ -59,7 +73,7 @@ export default function FeaturedGame() {
             weight="light"
           />
         </div>
-        <p className={styles.description}>{summary}</p>
+        <p className={styles.description}>{story}</p>
         <Line
           className={styles.lineOne}
           width="half"
