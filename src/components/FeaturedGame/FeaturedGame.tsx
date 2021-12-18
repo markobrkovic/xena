@@ -39,19 +39,10 @@ export default function FeaturedGame() {
 
   const navigate = useNavigate();
   let summary;
-
-  if (game?.storyline) {
-    summary = game?.storyline;
-  } else if (game?.summary) {
-    summary = game?.summary;
-  } else {
-    summary = 'No story';
-  }
-
   let content;
 
   if (!game) {
-    content = <p>Loading...</p>;
+    console.log('Fetching...');
   } else {
     content = (
       <section className={styles.featuredGameContainer}>

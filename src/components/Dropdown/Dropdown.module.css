@@ -1,0 +1,140 @@
+.dropdown__checkbox {
+  display: none;
+}
+
+.dropdown__button {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  height: 3rem;
+  width: 3rem;
+  position: fixed;
+  top: 0.3rem;
+  right: 0.3rem;
+  z-index: 200;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dropdown__background {
+  height: 3rem;
+  width: 3rem;
+  position: fixed;
+  top: 0.3rem;
+  right: 0.2rem;
+  background-image: radial-gradient(var(--color-primary), var(--color-primary));
+  z-index: 100;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.dropdown__nav {
+  height: 100vh;
+  position: fixed;
+  top: 0.3rem;
+  left: 0;
+  z-index: 150;
+  opacity: 0;
+  width: 0;
+  transition: all 0.8s;
+}
+
+.dropdown__list {
+  position: absolute;
+  top: 30%;
+  left: 46%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+  width: 100%;
+}
+
+.dropdown__item {
+  margin: 0.1rem;
+}
+
+.dropdown__link:link,
+.dropdown__link:visited {
+  display: inline-block;
+  font-size: var(--font-size-large);
+  font-weight: 300;
+  padding: 0.5rem 1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    var(--color-text) 50%
+  );
+  background-size: 225%;
+  transition: all 0.4s;
+}
+
+.dropdown__link:hover,
+.dropdown__link:active {
+  background-position: 100%;
+  color: var(--color-background);
+}
+
+.dropdown__checkbox:checked ~ .dropdown__background {
+  transform: scale(80);
+}
+
+.dropdown__checkbox:checked ~ .dropdown__nav {
+  opacity: 1;
+  width: 100%;
+}
+
+/* ICON */
+
+.dropdown__icon {
+  position: relative;
+  margin-top: 1.44rem;
+}
+
+.dropdown__icon,
+.dropdown__icon::before,
+.dropdown__icon::after {
+  display: inline-block;
+  width: 1.67rem;
+  height: 1px;
+  background-color: var(--color-text);
+}
+
+.dropdown__icon::before,
+.dropdown__icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  transition: all 0.2s;
+}
+
+.dropdown__icon::before {
+  top: -0.5rem;
+}
+
+.dropdown__icon::after {
+  top: 0.5rem;
+}
+
+.dropdown__button:hover .dropdown__icon::before {
+  top: -0.8rem;
+}
+
+.dropdown__button:hover .dropdown__icon::after {
+  top: 0.8rem;
+}
+
+.dropdown__checkbox:checked + .dropdown__button .dropdown__icon {
+  background-color: transparent;
+}
+
+.dropdown__checkbox:checked + .dropdown__button .dropdown__icon::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+.dropdown__checkbox:checked + .dropdown__button .dropdown__icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}

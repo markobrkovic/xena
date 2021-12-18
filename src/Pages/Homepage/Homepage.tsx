@@ -4,12 +4,22 @@ import Navbar from '../../components/Navbar/Navbar';
 import styles from './Homepage.module.css';
 
 export default function Homepage(): JSX.Element {
+  let navbar;
+  let headlineOne;
+  let headlineTwo;
+
+  setTimeout(() => {
+    headlineOne = <h2 className={styles.headline}>Featured</h2>;
+    headlineTwo = <h2 className={styles.headline}>Other Games</h2>;
+    console.log('finished');
+  }, 500);
+
   return (
     <div className={styles.container}>
       <Navbar title="Homepage" />
-      <h2 className={styles.headline}>Featured</h2>
+      {headlineOne}
       <FeaturedGame />
-      <h2 className={styles.headline}>Other Games</h2>
+      {headlineTwo}
       <GameList />
     </div>
   );
