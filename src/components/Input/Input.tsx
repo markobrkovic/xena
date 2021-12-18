@@ -2,6 +2,7 @@ import styles from './Input.module.css';
 
 type InputProps = {
   onChange: (value: string) => void;
+  type?: string;
   placeholder: string;
   className?: string;
   color: string;
@@ -11,6 +12,7 @@ type InputProps = {
 
 export default function Input({
   onChange,
+  type,
   className,
   placeholder,
   color,
@@ -19,6 +21,7 @@ export default function Input({
 }: InputProps) {
   return (
     <input
+      type={type}
       onChange={(event) => {
         onChange(event.target.value);
       }}
