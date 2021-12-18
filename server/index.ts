@@ -76,7 +76,7 @@ app.post('/api/friends', async (request, response) => {
   const isUserInDatabase = await userCollection.findOne({
     username: user.username,
   });
-  if (isUserInDatabase && isUserInDatabase.games) {
+  if (isUserInDatabase && isUserInDatabase.friends) {
     response.send(isUserInDatabase.friends);
   } else {
     response.status(404).send(user);

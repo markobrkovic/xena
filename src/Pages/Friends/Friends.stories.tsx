@@ -7,7 +7,7 @@ export default {
 };
 
 export const FriendsPage = () => (
-  <MemoryRouter initialEntries={['/game/1']}>
+  <MemoryRouter initialEntries={['/friends']}>
     <Routes>
       <Route path="/friends/" element={<Friends />} />
     </Routes>
