@@ -26,7 +26,7 @@ export default function Friends() {
   }, []);
 
   if (!friends) {
-    content = <p>No Friends</p>;
+    content = <p className={styles.loading}>Loading...</p>;
   } else {
     content = friends?.map((friend) => (
       <Friend

@@ -3,12 +3,9 @@
   max-width: 667px;
   padding-top: 4rem;
   display: grid;
-  place-items: center;
 }
 
 .loading {
-  display: inline-block;
-  position: absolute;
   align-self: center;
   justify-self: center;
 }
