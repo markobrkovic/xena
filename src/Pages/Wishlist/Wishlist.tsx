@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import Game from '../../components/Game/Game';
 import styles from './Wishlist.module.css';
 import { GameProps } from '../../components/Game/Game';
 import fetchWishlist from '../../utils/fetchWishlist';
 import fetchMultipleGames from '../../utils/fetchMultipleGames';
 import Navbar from '../../components/Navbar/Navbar';
+import GameWishlist from '../../components/GameWishlist/GameWishlist';
 
 export default function Wishlist() {
   const [games, setGames] = useState<null | GameProps[]>(null);
@@ -30,7 +30,7 @@ export default function Wishlist() {
     content = <p className={styles.loading}>Loading...</p>;
   } else {
     content = games?.map((game) => (
-      <Game
+      <GameWishlist
         key={game.id}
         id={game.id}
         name={game.name}
