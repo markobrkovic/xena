@@ -1,24 +1,17 @@
 .navbar {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
+  place-items: center;
   position: fixed;
   top: 0;
   z-index: 150;
   width: 100%;
   align-items: center;
   padding: 0.2rem;
-  background-color: var(--color-primary);
-}
-
-.backButton {
-  position: absolute;
-  left: 0;
+  background-color: var(--color-background);
 }
 
 .pageTitle {
   text-transform: uppercase;
   font-weight: 300;
   font-size: var(--font-size-large);
-  grid-column: 2/2;
 }
