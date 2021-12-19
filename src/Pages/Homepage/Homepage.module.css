@@ -15,7 +15,9 @@
   top: 4rem;
   right: 0;
   background-color: var(--color-secondary);
+  width: 91%;
   padding: 0.3rem 0.6rem;
+  border-radius: 5px;
 }
 
 .searchInput::placeholder {

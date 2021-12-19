@@ -27,7 +27,7 @@ function SearchInput({
     <Input
       className={className}
       onChange={setValue}
-      placeholder={text ? text : 'Search by tag or name'}
+      placeholder={text ? text : 'Search'}
       color="text"
       size="medium"
       backgroundColor="background"
