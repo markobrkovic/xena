@@ -1,5 +1,6 @@
 .container {
   padding-top: 6rem;
+  max-width: 667px;
 }
 
 .headline {
