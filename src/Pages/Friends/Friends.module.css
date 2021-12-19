@@ -11,84 +11,27 @@
   justify-self: center;
 }
 
-.gameOverview {
-  background: linear-gradient(
-    to left,
-    var(--color-secondary),
-    var(--color-background)
-  );
-  padding: 0 0 1rem;
-  position: relative;
-}
-
 .image {
   max-width: 100%;
 }
 
-.gameInfoContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 3;
-}
-
-.gameTitle {
-  font-size: var(--font-size-large);
-  margin: 0.5rem 0 0 1rem;
-  grid-column: 1 / span 2;
-}
-
-.releaseDateTitle {
-  margin: 0.5rem 0 0 1rem;
-  grid-row: 2;
-  font-size: var(--font-size-medium);
-}
-
-.genre {
-  margin: 0.5rem 1rem;
-  position: absolute;
-  right: 0;
-  top: 4rem;
-  padding: 0.2rem 0.6rem;
-  font-size: var(--font-size-medium);
-  background-color: var(--color-quaternary);
-}
-
-.addToWishlist {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0.5rem 1rem;
-  border: none;
+.addOrSearch {
+  margin: 0 0 0 1.45rem;
   text-transform: uppercase;
-  background-color: tomato;
-  font-size: var(--font-size-small);
+  font-weight: 200;
+  font-size: var(--font-size-medium);
+}
+
+.searchInput {
+  margin: 0.5rem 0 1rem 1.45rem;
+  width: 85%;
+  background-color: var(--color-secondary);
+  padding: 0.3rem 0.6rem;
+}
+
+.searchInput::placeholder {
   color: var(--color-text);
-}
-
-.removeFromWishlist {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  text-transform: uppercase;
-  background-color: var(--color-quaternary-light);
-  font-size: var(--font-size-small);
-  color: var(--color-text);
-}
-
-.addToWishlist:hover {
-  cursor: pointer;
-}
-
-.gameSectionsTitle {
   font-size: var(--font-size-medium);
-  text-transform: uppercase;
-  margin: 1rem 1rem 0.5rem;
-}
-
-.description {
-  font-size: var(--font-size-medium);
-  font-weight: 300;
-  margin: 1rem;
+  font-weight: 100;
+  opacity: 0.8;
 }
