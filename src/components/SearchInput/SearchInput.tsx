@@ -22,10 +22,10 @@ function SearchInput({ className, onSearch }: OnSearchProps): JSX.Element {
     <Input
       className={className}
       onChange={setValue}
-      placeholder="Search"
-      color="text--contrast"
+      placeholder="Search by tag or name"
+      color="text"
       size="medium"
-      backgroundColor="background--contrast"
+      backgroundColor="background"
     />
   );
 }

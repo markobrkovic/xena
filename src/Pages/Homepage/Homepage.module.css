@@ -1,5 +1,5 @@
 .container {
-  padding-top: 4rem;
+  padding-top: 6rem;
 }
 
 .headline {
@@ -7,4 +7,20 @@
   font-weight: 100;
   text-transform: uppercase;
   margin: 1rem;
+}
+
+.searchInput {
+  margin: 0.5rem 1rem 0 0;
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  background-color: var(--color-secondary);
+  padding: 0.3rem 0.6rem;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text);
+  font-size: var(--font-size-medium);
+  font-weight: 100;
+  opacity: 0.8;
 }

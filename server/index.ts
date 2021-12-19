@@ -225,6 +225,33 @@ app.post('/api/twitchgames/game', async (req, res) => {
   return response;
 });
 
+app.post('/api/twitchgames/search', async (req, res) => {
+  const { search } = req.body;
+  console.log('Search ' + search);
+  console.log('/twitchgames/game endpoint called');
+  const options = {
+    'Client-ID': `${process.env.CLIENT_ID}`,
+    Authorization: `Bearer ${process.env.ACCESSTOKEN}`,
+  };
+
+  const response = await fetch('https://api.igdb.com/v4/games', {
+    method: 'post',
+    headers: options,
+    body: `fields *, genres.*, screenshots.*, websites.*, release_dates.*; search "${search}";`,
+  })
+    .then((res) => res.json())
+    .catch((e) => {
+      console.error({
+        message: 'oh noes',
+        error: e,
+      });
+    });
+
+  console.log('Response:', response);
+  res.send(response);
+  return response;
+});
+
 // REDIRECT
 
 app.get('*', (_request, response) =>

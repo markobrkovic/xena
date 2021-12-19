@@ -1,25 +1,53 @@
+import { useEffect, useState } from 'react';
 import FeaturedGame from '../../components/FeaturedGame/FeaturedGame';
+import Game, { GameProps } from '../../components/Game/Game';
 import GameList from '../../components/GameList/GameList';
 import Navbar from '../../components/Navbar/Navbar';
+import SearchInput from '../../components/SearchInput/SearchInput';
+import fetchSearch from '../../utils/fetchSearch';
 import styles from './Homepage.module.css';
 
 export default function Homepage(): JSX.Element {
-  let headlineOne;
-  let headlineTwo;
+  const [search, setSearch] = useState<null | string>(null);
+  const [games, setGames] = useState<null | GameProps[]>(null);
 
-  setTimeout(() => {
-    headlineOne = <h2 className={styles.headline}>Featured</h2>;
-    headlineTwo = <h2 className={styles.headline}>Other Games</h2>;
-    console.log('finished');
-  }, 500);
+  let content;
+  useEffect(() => {
+    // getDocuments().then(setDocuments);
+    async function load() {
+      const newGames = await fetchSearch(search);
+      setGames(newGames);
+    }
+    load();
+  }, [search]);
+
+  if (search) {
+    content = games?.map((game) => (
+      <Game
+        key={game.id}
+        id={game.id}
+        name={game.name}
+        screenshots={game.screenshots}
+        storyline={game.storyline}
+        summary={game.summary}
+        genres={game.genres}
+        release_dates={game.release_dates}
+      />
+    ));
+  } else {
+    content = (
+      <>
+        <FeaturedGame />
+        <GameList />
+      </>
+    );
+  }
 
   return (
     <div className={styles.container}>
       <Navbar title="Homepage" />
-      {headlineOne}
-      <FeaturedGame />
-      {headlineTwo}
-      <GameList />
+      <SearchInput className={styles.searchInput} onSearch={setSearch} />
+      {content}
     </div>
   );
 }
