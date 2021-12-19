@@ -46,6 +46,7 @@ export default function LoginForm() {
         <span>password</span>
         <Input
           onChange={setPassword}
+          type="password"
           className={styles.formLogin_input}
           placeholder="Enter password"
           color="text--contrast"

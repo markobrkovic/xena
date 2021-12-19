@@ -1,5 +1,6 @@
 import { Route, Routes, Link } from 'react-router-dom';
 import LoginForm from '../components/LoginForm/LoginForm';
+import Friends from '../Pages/Friends/Friends';
 import GameInfo from '../Pages/GameInfo/GameInfo';
 import Homepage from '../Pages/Homepage/Homepage';
 import Wishlist from '../Pages/Wishlist/Wishlist';
@@ -12,11 +13,9 @@ function App() {
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/game/:id" element={<GameInfo />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/friends" element={<Friends />} />
       </Routes>
-      <nav>
-        <Link to="/homepage">Home</Link>
-        <Link to="/wishlist">Wishlist</Link>
-      </nav>
+      <nav></nav>
     </>
   );
 }

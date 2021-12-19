@@ -60,7 +60,7 @@
   padding: 0.5rem 1rem;
   border: none;
   text-transform: uppercase;
-  background-color: tomato;
+  background-color: var(--color-quaternary-light);
   font-size: var(--font-size-small);
   color: var(--color-text);
 }
@@ -72,7 +72,7 @@
   padding: 0.5rem 1rem;
   border: none;
   text-transform: uppercase;
-  background-color: var(--color-quaternary-light);
+  background-color: tomato;
   font-size: var(--font-size-small);
   color: var(--color-text);
 }

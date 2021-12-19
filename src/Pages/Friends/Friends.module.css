@@ -1,0 +1,38 @@
+.container {
+  width: 100%;
+  padding-top: 6.5rem;
+  display: grid;
+}
+
+.loading {
+  display: inline-block;
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+}
+
+.image {
+  max-width: 100%;
+}
+
+.addOrSearch {
+  margin: 0 0 0 1.45rem;
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: var(--font-size-medium);
+}
+
+.searchInput {
+  margin: 0.5rem 0 1rem 1.45rem;
+  width: 85%;
+  background-color: var(--color-secondary);
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text);
+  font-size: var(--font-size-medium);
+  font-weight: 100;
+  opacity: 0.8;
+}

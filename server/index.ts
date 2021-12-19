@@ -24,12 +24,6 @@ app.use(express.json());
 // Serve production bundle
 app.use(express.static('dist'));
 
-// TEST
-app.get('/api/hello', (_request, response) => {
-  response.json({ message: 'Hello from server' });
-});
-//
-
 // USER
 
 app.get('/api/users', async (_request, response) => {
@@ -38,6 +32,55 @@ app.get('/api/users', async (_request, response) => {
   const allUsers = await cursor.toArray();
 
   response.send(allUsers);
+});
+
+app.post('/api/friends/add', async (request, response) => {
+  const user = request.body;
+  const userCollection = getUserCollection();
+  const isUserInDatabase = await userCollection.findOne({
+    username: user.username,
+  });
+  let newvalues;
+
+  if (isUserInDatabase) {
+    const myquery = { username: user.username };
+    const isFriendInDatabase = isUserInDatabase.friends.find(
+      (friendName: string) => friendName === user.friendName
+    );
+    const friends = isUserInDatabase.friends;
+    if (isUserInDatabase.friends && !isFriendInDatabase) {
+      friends.push(user.friendName);
+      newvalues = {
+        $set: { friends: friends },
+      };
+    } else {
+      newvalues = {
+        $set: { friends: friends },
+      };
+    }
+    userCollection.updateOne(myquery, newvalues, function (err, _res) {
+      if (err) throw err;
+      console.log('1 document updated');
+    });
+    response.send(user);
+  } else {
+    response.status(404).send();
+  }
+});
+
+// Get Friends from user
+
+app.post('/api/friends', async (request, response) => {
+  const user = request.body;
+  const userCollection = getUserCollection();
+  const isUserInDatabase = await userCollection.findOne({
+    username: user.username,
+  });
+  if (isUserInDatabase && isUserInDatabase.friends) {
+    response.send(isUserInDatabase.friends);
+  } else {
+    response.status(404).send(user);
+  }
 });
 
 // ADD USER TO DATABASE
@@ -168,6 +211,33 @@ app.post('/api/twitchgames/game', async (req, res) => {
     method: 'post',
     headers: options,
     body: `fields *, genres.*, screenshots.*, websites.*, release_dates.*; where id = ${gameId.id};`,
+  })
+    .then((res) => res.json())
+    .catch((e) => {
+      console.error({
+        message: 'oh noes',
+        error: e,
+      });
+    });
+
+  console.log('Response:', response);
+  res.send(response);
+  return response;
+});
+
+app.post('/api/twitchgames/search', async (req, res) => {
+  const { search } = req.body;
+  console.log('Search ' + search);
+  console.log('/twitchgames/game endpoint called');
+  const options = {
+    'Client-ID': `${process.env.CLIENT_ID}`,
+    Authorization: `Bearer ${process.env.ACCESSTOKEN}`,
+  };
+
+  const response = await fetch('https://api.igdb.com/v4/games', {
+    method: 'post',
+    headers: options,
+    body: `fields *, genres.*, screenshots.*, websites.*, release_dates.*; search "${search}";`,
   })
     .then((res) => res.json())
     .catch((e) => {

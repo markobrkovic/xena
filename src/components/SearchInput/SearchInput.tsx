@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Input from '../Input/Input';
 
 type OnSearchProps = {
+  text?: string;
   className?: string;
   onSearch: (title: string) => void;
 };
 
-function SearchInput({ className, onSearch }: OnSearchProps): JSX.Element {
+function SearchInput({
+  text,
+  className,
+  onSearch,
+}: OnSearchProps): JSX.Element {
   const [value, setValue] = useState('');
 
   useEffect(() => {
@@ -22,10 +27,10 @@ function SearchInput({ className, onSearch }: OnSearchProps): JSX.Element {
     <Input
       className={className}
       onChange={setValue}
-      placeholder="Search"
-      color="text--contrast"
+      placeholder={text ? text : 'Search'}
+      color="text"
       size="medium"
-      backgroundColor="background--contrast"
+      backgroundColor="background"
     />
   );
 }
