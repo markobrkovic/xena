@@ -18,7 +18,8 @@ npm run dev : Runs storybook and the app in development mode to view it in the b
 3001 for the server
 3000 for the client
 6006 for the storybook
-📜 .env
+
+## 📜 .env
 If you plan on publishing the code you should use dotenv to secure your `API keys`  and `Access Tokens` that you will need to connect with MongoDB and Twitch API.
 
 You can follow the instructions here to request your own API key and Token: https://api-docs.igdb.com/#account-creation
