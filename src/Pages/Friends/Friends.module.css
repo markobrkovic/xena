@@ -5,8 +5,6 @@
 }
 
 .loading {
-  display: inline-block;
-  position: absolute;
   align-self: center;
   justify-self: center;
 }

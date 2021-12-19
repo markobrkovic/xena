@@ -2,11 +2,10 @@
   width: 100%;
   max-width: 667px;
   padding-top: 4rem;
+  display: grid;
 }
 
 .loading {
-  display: inline-block;
-  position: absolute;
   align-self: center;
   justify-self: center;
 }
