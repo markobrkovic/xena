@@ -1,3 +1,4 @@
+import Line from '../design-components/Line/Line';
 import Dropdown from '../Dropdown/Dropdown';
 import styles from './Navbar.module.css';
 
@@ -10,6 +11,7 @@ export default function Navbar({ title }: NavbarProps) {
     <nav className={styles.navbar}>
       <h2 className={styles.pageTitle}>{title}</h2>
       <Dropdown />
+      <Line width={'half'} highestOpacityPoint={'middle'} />
     </nav>
   );
 }

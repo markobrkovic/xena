@@ -1,11 +1,17 @@
 .container {
-  background-color: var(--color-primary);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
   padding: 1rem 2rem;
-  margin: 1rem;
   text-transform: uppercase;
   color: var(--color-text);
   font-weight: 100;
-  max-width: 680px;
+  max-width: 480px;
+  width: 90%;
   text-align: center;
 }
 
@@ -22,10 +28,12 @@
 
 .formLogin_input {
   padding: 0.3rem 0.8rem;
+  text-align: center;
 }
 
 .formLogin input::placeholder {
   text-align: center;
+  text-transform: uppercase;
 }
 
 .formRegister {

@@ -36,7 +36,7 @@ export default function Dropdown() {
             </Link>
           </li>
           <li className={styles['dropdown__item']}>
-            <Link className={styles['dropdown__link']} to={'/login'}>
+            <Link className={styles['dropdown__link']} to={'/'}>
               Logout
             </Link>
           </li>

@@ -3,7 +3,7 @@
 }
 
 .dropdown__button {
-  background-color: var(--color-primary);
+  background-color: var(--color-background);
   color: var(--color-background);
   height: 3rem;
   width: 3rem;
@@ -11,6 +11,7 @@
   top: 0.3rem;
   right: 0.3rem;
   z-index: 200;
+  border-radius: 50%;
   text-align: center;
   cursor: pointer;
 }
@@ -22,7 +23,10 @@
   position: fixed;
   top: 0.3rem;
   right: 0.2rem;
-  background-image: radial-gradient(var(--color-primary), var(--color-primary));
+  background-image: radial-gradient(
+    var(--color-background),
+    var(--color-background)
+  );
   z-index: 100;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 }
@@ -78,7 +82,7 @@
 }
 
 .dropdown__checkbox:checked ~ .dropdown__background {
-  transform: scale(80);
+  transform: scale(50);
 }
 
 .dropdown__checkbox:checked ~ .dropdown__nav {
