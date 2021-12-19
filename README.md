@@ -1,4 +1,4 @@
-### XENA
+# XENA
 
 An app for gamers as well as non-gamers intrested stepping in the gaming world. You can view all available games (that are on this API) from all platforms.
 You can also save the one's you like in your own wishlist. You can also add friends and view their wishlists.
@@ -14,7 +14,7 @@ In the project directory, you can then run:
 
 npm run dev : Runs storybook and the app in development mode to view it in the browser. 
 
-# The default PORTS are:
+### The default PORTS are:
 3001 for the server
 3000 for the client
 6006 for the storybook
@@ -28,7 +28,7 @@ npm run build : This will build the client, server and storybook for production 
 
 npm start : Runs the server in production mode and serve production bundle from npm run build
 
-# In production, you have a single server serving everything.
+### In production, you have a single server serving everything.
 
 /api/* is the API endpoint.
 /storybook is the storybook.
