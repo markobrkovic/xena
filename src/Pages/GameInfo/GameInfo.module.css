@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  padding-top: 6.5rem;
+  padding-top: 4rem;
   display: grid;
 }
 
@@ -47,9 +47,9 @@
   margin: 0.5rem 1rem;
   position: absolute;
   right: 0;
-  top: 4rem;
+  bottom: 3.1rem;
   padding: 0.2rem 0.6rem;
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-small);
   background-color: var(--color-quaternary);
 }
 

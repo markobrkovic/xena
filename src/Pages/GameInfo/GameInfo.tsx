@@ -58,9 +58,6 @@ export default function GameInfo() {
     }
     content = (
       <>
-        <span className={styles.genre}>
-          {game?.genres ? game?.genres[0].name : 'No genre available'}
-        </span>
         <section className={styles.gameOverview}>
           <Image
             className={styles.image}
@@ -81,6 +78,9 @@ export default function GameInfo() {
               weight="thin"
             />
           </div>
+          <span className={styles.genre}>
+            {game?.genres ? game?.genres[0].name : 'No genre available'}
+          </span>
           <button
             onClick={async () => {
               setIsWishlist(isWishlist ? false : true);
