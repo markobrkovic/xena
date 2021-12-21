@@ -1,6 +1,12 @@
 .container {
   padding-top: 6rem;
-  max-width: 667px;
+  width: 100%;
+  display: grid;
+}
+
+.gameContainer {
+  display: grid;
+  justify-items: center;
 }
 
 .headline {
@@ -26,4 +32,17 @@
   font-size: var(--font-size-medium);
   font-weight: 100;
   opacity: 0.8;
+}
+
+@media (min-width: 560px) {
+  .container {
+    justify-content: center;
+  }
+
+  .searchInput {
+    position: static;
+    width: 560px;
+    margin: 0;
+    justify-self: center;
+  }
 }
