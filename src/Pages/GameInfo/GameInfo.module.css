@@ -1,8 +1,8 @@
 .container {
   width: 100%;
-  max-width: 667px;
   padding-top: 4rem;
   display: grid;
+  justify-content: center;
 }
 
 .loading {
@@ -90,4 +90,18 @@
   font-size: var(--font-size-medium);
   font-weight: 300;
   margin: 1rem;
+}
+
+@media (min-width: 560px) {
+  .container {
+    background-image: radial-gradient(
+      var(--color-primary),
+      var(--color-background)
+    );
+  }
+
+  .gameContainer {
+    width: 550px;
+    box-shadow: 0 1px 20px rgb(0 0 0 / 56.8%);
+  }
 }

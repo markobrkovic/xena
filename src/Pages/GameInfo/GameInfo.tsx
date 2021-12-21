@@ -57,7 +57,7 @@ export default function GameInfo() {
       summary = <p className={styles.description}>{'No story'}</p>;
     }
     content = (
-      <>
+      <div className={styles.gameContainer}>
         <section className={styles.gameOverview}>
           <Image
             className={styles.image}
@@ -106,7 +106,7 @@ export default function GameInfo() {
         />
         <Line width="half" highestOpacityPoint="start" />
         {summary}
-      </>
+      </div>
     );
   }
 
