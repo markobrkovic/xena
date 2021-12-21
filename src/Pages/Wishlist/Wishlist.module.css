@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   max-width: 667px;
-  padding-top: 2rem;
+  padding-top: 3rem;
   display: grid;
 }
 
