@@ -1,6 +1,6 @@
 .friendContainer {
   display: grid;
-  width: 22rem;
+  width: 20rem;
   margin: 0.5rem 1.5rem;
   place-items: center;
   justify-items: start;
