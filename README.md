@@ -47,19 +47,21 @@ https://xena.herokuapp.com/
 
 ## Installing / Getting started
 
-npm install : Installs the required dependencies. 
+npm install : Installs the required dependencies.
 
 In the project directory, you can then run:
 
-npm run dev : Runs storybook and the app in development mode to view it in the browser. 
+npm run dev : Runs storybook and the app in development mode to view it in the browser.
 
 ### The default PORTS are:
+
 3001 for the server
 3000 for the client
 6006 for the storybook
 
 ## 📜 .env
-If you plan on publishing the code you should use dotenv to secure your `API keys`  and `Access Tokens` that you will need to connect with MongoDB and Twitch API.
+
+If you plan on publishing the code you should use dotenv to secure your `API keys` and `Access Tokens` that you will need to connect with MongoDB and Twitch API.
 
 You can follow the instructions here to request your own API key and Token: https://api-docs.igdb.com/#account-creation
 
@@ -70,9 +72,9 @@ npm start : Runs the server in production mode and serve production bundle from 
 
 ### In production, you have a single server serving everything.
 
-/api/* is the API endpoint.
+/api/_ is the API endpoint.
 /storybook is the storybook.
-/* is the client.
+/_ is the client.
 
 ## Tests
 
