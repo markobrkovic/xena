@@ -1,4 +1,4 @@
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import LoginForm from '../components/LoginForm/LoginForm';
 import Friends from '../Pages/Friends/Friends';
 import GameInfo from '../Pages/GameInfo/GameInfo';

@@ -36,10 +36,10 @@ export default function Homepage(): JSX.Element {
     ));
   } else {
     content = (
-      <>
+      <div className={styles.gameContainer}>
         <FeaturedGame />
         <GameList />
-      </>
+      </div>
     );
   }
 

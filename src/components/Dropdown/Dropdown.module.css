@@ -82,7 +82,7 @@
 }
 
 .dropdown__checkbox:checked ~ .dropdown__background {
-  transform: scale(50);
+  transform: scale(80);
 }
 
 .dropdown__checkbox:checked ~ .dropdown__nav {
@@ -142,4 +142,20 @@
 .dropdown__checkbox:checked + .dropdown__button .dropdown__icon::after {
   top: 0;
   transform: rotate(-135deg);
+}
+
+@media (min-width: 560px) {
+  .dropdown__list {
+    top: 45%;
+    left: 50%;
+  }
+
+  .dropdown__link:link,
+  .dropdown__link:visited {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    width: 15rem;
+    font-weight: 300;
+    background-size: 225%;
+  }
 }
