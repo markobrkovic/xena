@@ -46,7 +46,7 @@ export default function Wishlist() {
   return (
     <div className={styles.container}>
       <Navbar title="Wishlist" />
-      {content}
+      <div className={styles.wishlistContainer}>{content}</div>
     </div>
   );
 }

@@ -1,8 +1,12 @@
 .container {
   width: 100%;
-  max-width: 667px;
   padding-top: 3rem;
   display: grid;
+}
+
+.wishlistContainer {
+  display: grid;
+  justify-items: center;
 }
 
 .loading {
