@@ -16,6 +16,7 @@ export default function GameList() {
         '20',
         '30',
         '40',
+        '50',
       ]);
       setGames(gameData);
     }
@@ -42,9 +43,5 @@ export default function GameList() {
     ));
   }
 
-  return (
-    <div>
-      <div className={styles.container}>{content}</div>
-    </div>
-  );
+  return <div className={styles.container}>{content}</div>;
 }

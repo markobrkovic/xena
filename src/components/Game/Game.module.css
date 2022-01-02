@@ -16,7 +16,7 @@
 }
 
 .image {
-  max-width: 100%;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -58,4 +58,11 @@
 
 .moreInfoBtn:hover {
   cursor: pointer;
+}
+
+@media (min-width: 560px) {
+  .gameContainer {
+    margin: 0;
+    width: 40rem;
+  }
 }

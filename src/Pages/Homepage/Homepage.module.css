@@ -17,12 +17,10 @@
 }
 
 .searchInput {
-  margin: 0.5rem 1rem 0 0;
-  position: absolute;
-  top: 4rem;
-  right: 0;
+  margin: 0.5rem 1rem 0;
+  justify-self: center;
   background-color: var(--color-secondary);
-  width: 91%;
+  width: 93%;
   padding: 0.3rem 0.6rem;
   border-radius: 5px;
 }
@@ -35,14 +33,13 @@
 }
 
 @media (min-width: 560px) {
-  .container {
+  /* .container {
     justify-content: center;
-  }
+  } */
 
   .searchInput {
-    position: static;
-    width: 560px;
-    margin: 0;
+    width: 35rem;
+    margin: 0 0 2rem;
     justify-self: center;
   }
 }
