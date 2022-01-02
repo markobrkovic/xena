@@ -13,7 +13,8 @@ export type FriendProps = {
 export default function Friends() {
   const [friends, setFriends] = useState<null | FriendProps[]>(null);
   const [search, setSearch] = useState<null | string>(null);
-  const username = localStorage.getItem('username');
+  // const username = localStorage.getItem('username');
+  const username = 'Marko';
   console.log(search);
   let content;
   useEffect(() => {
@@ -43,11 +44,11 @@ export default function Friends() {
         <Navbar title="Friends" />
         <span className={styles.addOrSearch}>Add or Search For a Friend</span>
         <SearchInput
-          text="Enter friend's username"
+          text="Enter username"
           className={styles.searchInput}
           onSearch={setSearch}
         />
-        {content}
+        <div className={styles.friendsContainer}>{content}</div>
       </div>
     </>
   );

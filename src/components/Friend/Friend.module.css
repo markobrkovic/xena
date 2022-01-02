@@ -1,6 +1,6 @@
 .friendContainer {
   display: grid;
-  width: 20rem;
+  width: 86%;
   margin: 0.5rem 1.5rem;
   place-items: center;
   justify-items: start;
@@ -24,4 +24,10 @@
   font-weight: 300;
   padding: 1rem;
   align-self: baseline;
+}
+
+@media (min-width: 560px) {
+  .friendContainer {
+    width: 20rem;
+  }
 }
