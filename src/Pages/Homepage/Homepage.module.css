@@ -4,25 +4,13 @@
   display: grid;
 }
 
-.gameContainer {
-  display: grid;
-  justify-items: center;
-}
-
-.headline {
-  font-size: var(--font-size-large);
-  font-weight: 100;
-  text-transform: uppercase;
-  margin: 1rem;
-}
-
 .searchInput {
   margin: 0.5rem 1rem 0;
   justify-self: center;
   background-color: var(--color-secondary);
   width: 93%;
   padding: 0.3rem 0.6rem;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .searchInput::placeholder {
@@ -32,14 +20,13 @@
   opacity: 0.8;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 590px) {
   /* .container {
     justify-content: center;
   } */
 
   .searchInput {
     width: 35rem;
-    margin: 0 0 2rem;
     justify-self: center;
   }
 }

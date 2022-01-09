@@ -9,15 +9,16 @@ export default function GameList() {
 
   useEffect(() => {
     async function getGames() {
-      const gameData = await fetchMultipleGames([
-        '1941',
-        '1',
-        '15',
-        '20',
-        '30',
-        '40',
-        '50',
-      ]);
+      const games: number[] = [];
+      for (let i = 0; i < 20; i++) {
+        const value = Math.floor(Math.random() * 2000);
+        if (!games.find((element) => element === value)) {
+          games.push(value);
+        } else {
+          continue;
+        }
+      }
+      const gameData = await fetchMultipleGames(games);
       setGames(gameData);
     }
 

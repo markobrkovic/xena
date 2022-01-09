@@ -1,29 +1,31 @@
 .gameContainer {
   display: grid;
   margin: 1rem;
+  min-width: 256px;
   max-width: 555px;
-  justify-content: center;
   background: linear-gradient(
     to left,
     var(--color-secondary),
     var(--color-background)
   );
   position: relative;
+  box-shadow: 0 1px 5px black;
 }
 
 .imageContainer {
   overflow: hidden;
+  height: max-content;
 }
 
 .image {
   width: 100%;
-  object-fit: cover;
+  overflow: hidden;
 }
 
 .gameTitle {
   font-size: var(--font-size-large);
   padding: 0.5rem 1rem;
-  box-shadow: 1px 4px 4px black;
+  box-shadow: 1px 2px 2px black;
   position: absolute;
   top: 0.1rem;
   background-color: var(--color-background);
@@ -60,9 +62,12 @@
   cursor: pointer;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 768px) {
   .gameContainer {
     margin: 0;
-    width: 40rem;
+  }
+
+  .image {
+    max-height: 135px;
   }
 }

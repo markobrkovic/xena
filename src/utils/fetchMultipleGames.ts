@@ -1,4 +1,4 @@
-export default async function fetchMultipleGames(whereId: string[]) {
+export default async function fetchMultipleGames(whereId: number[]) {
   console.log('TEST');
   console.log(whereId);
   let id = '';

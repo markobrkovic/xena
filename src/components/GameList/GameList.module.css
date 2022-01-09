@@ -1,14 +1,15 @@
 .container {
   display: grid;
+  justify-items: center;
   justify-content: center;
   width: 100%;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 768px) {
   .container {
-    justify-content: center;
-    justify-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 40rem));
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 16rem));
+    justify-content: space-evenly;
     row-gap: 2rem;
+    column-gap: 0.5rem;
   }
 }

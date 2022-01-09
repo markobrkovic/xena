@@ -38,7 +38,7 @@ export default function Game({
   } else if (summary) {
     story = <p className={styles.description}>{summary.slice(0, 100)}...</p>;
   } else {
-    story = <p className={styles.description}>{'No story'}</p>;
+    story = <p className={styles.description}>{'No story found...'}</p>;
   }
 
   return (
