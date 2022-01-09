@@ -1,5 +1,5 @@
 .container {
-  padding-top: 6rem;
+  padding-top: 5rem;
   width: 100%;
   display: grid;
 }
@@ -27,6 +27,7 @@
 
   .searchInput {
     width: 35rem;
+    margin-bottom: 1rem;
     justify-self: center;
   }
 }

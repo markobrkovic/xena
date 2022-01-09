@@ -196,7 +196,7 @@ app.post('/api/twitchgames', async (_req, res) => {
   return response;
 });
 
-// Fetching one game from twitch API
+// Fetching a game from twitch API
 
 app.post('/api/twitchgames/game', async (req, res) => {
   const gameId = req.body;
@@ -210,7 +210,7 @@ app.post('/api/twitchgames/game', async (req, res) => {
   const response = await fetch('https://api.igdb.com/v4/games', {
     method: 'post',
     headers: options,
-    body: `fields *, genres.*, screenshots.*, websites.*, release_dates.*; where id = ${gameId.id};`,
+    body: `fields *, genres.*, screenshots.*, websites.*, release_dates.*; where id = ${gameId.id}; limit 30;`,
   })
     .then((res) => res.json())
     .catch((e) => {
