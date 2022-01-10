@@ -117,7 +117,7 @@ app.post('/api/login', async (request, response) => {
   }
 });
 
-// Add game to use's wishlistr
+// Add game to user's wishlist
 
 app.post('/api/wishlist', async (request, response) => {
   const user = request.body;
@@ -154,6 +154,43 @@ app.post('/api/wishlist', async (request, response) => {
   }
 });
 
+// Remove game from user's wishlist
+
+app.post('/api/wishlist', async (request, response) => {
+  const user = request.body;
+  const userCollection = getUserCollection();
+  const isUserInDatabase = await userCollection.findOne({
+    username: user.username,
+  });
+
+  let newvalues;
+
+  if (isUserInDatabase) {
+    const myquery = { username: user.username };
+    const isGameInDatabase = isUserInDatabase.games.find(
+      (id: number) => id === user.gameId
+    );
+    const games = isUserInDatabase.games;
+    if (isUserInDatabase.games && isGameInDatabase) {
+      games.pop(user.gameId);
+      newvalues = {
+        $set: { games: games },
+      };
+    } else {
+      newvalues = {
+        $set: { games: games },
+      };
+    }
+    userCollection.updateOne(myquery, newvalues, function (err, _res) {
+      if (err) throw err;
+      console.log('1 document updated');
+    });
+    response.send(user);
+  } else {
+    response.status(404).send(JSON.stringify('You are not logged in'));
+  }
+});
+
 // Fetch Games for user's Wishlist
 
 app.post('/api/wishlist/library', async (request, response) => {
@@ -169,34 +206,7 @@ app.post('/api/wishlist/library', async (request, response) => {
   }
 });
 
-// Fetching "All" Games
-
-app.post('/api/twitchgames', async (_req, res) => {
-  console.log('/twitchgames endpoint called');
-  const options = {
-    'Client-ID': `${process.env.CLIENT_ID}`,
-    Authorization: `Bearer ${process.env.ACCESSTOKEN}`,
-  };
-
-  const response = await fetch('https://api.igdb.com/v4/games', {
-    method: 'post',
-    headers: options,
-    body: 'fields *, genres.*, screenshots.*, websites.*, release_dates.*;',
-  })
-    .then((res) => res.json())
-    .catch((e) => {
-      console.error({
-        message: 'oh noes',
-        error: e,
-      });
-    });
-
-  console.log('Response:', response);
-  res.send(response);
-  return response;
-});
-
-// Fetching a game from twitch API
+// Fetching games from twitch API
 
 app.post('/api/twitchgames/game', async (req, res) => {
   const gameId = req.body;
