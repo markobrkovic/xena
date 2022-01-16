@@ -20,7 +20,7 @@ export default function Homepage(): JSX.Element {
   }, [search]);
 
   if (search) {
-    content = games?.map((game) => (
+    const searchedGames = games?.map((game) => (
       <Game
         key={game.id}
         id={game.id}
@@ -32,12 +32,9 @@ export default function Homepage(): JSX.Element {
         release_dates={game.release_dates}
       />
     ));
+    content = <div className={styles.gameContainer}>{searchedGames}</div>;
   } else {
-    content = (
-      <div className={styles.gameContainer}>
-        <GameList />
-      </div>
-    );
+    content = <GameList />;
   }
 
   return (

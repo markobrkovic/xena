@@ -40,8 +40,8 @@ export default function Friends() {
 
   return (
     <>
+      <Navbar title="Friends" />
       <div className={styles.container}>
-        <Navbar title="Friends" />
         <span className={styles.addOrSearch}>Add or Search For a Friend</span>
         <SearchInput
           text="Enter username"

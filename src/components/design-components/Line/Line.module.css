@@ -1,5 +1,5 @@
 .line {
-  height: 2px;
+  height: 1px;
 }
 
 .half {
@@ -7,28 +7,24 @@
 }
 
 .start {
-  background: linear-gradient(
-    to right,
-    var(--color-text) 10%,
-    var(--color-background)
-  );
+  background: linear-gradient(to right, var(--color-text) 10%, transparent);
 }
 
 .middle {
   background: linear-gradient(
     to right,
-    var(--color-background),
+    transparent,
     var(--color-text) 50%,
-    var(--color-background)
+    transparent
   );
 }
 
 .middle--secondary {
   background: linear-gradient(
     to right,
-    var(--color-secondary),
+    transparent,
     var(--color-text) 45% 55%,
-    var(--color-secondary)
+    transparent
   );
 }
 

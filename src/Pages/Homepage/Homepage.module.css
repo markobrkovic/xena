@@ -1,5 +1,5 @@
 .container {
-  padding-top: 5rem;
+  padding: 4rem 0;
   width: 100%;
   display: grid;
 }
@@ -8,7 +8,7 @@
   margin: 0.5rem 1rem 0;
   justify-self: center;
   background-color: var(--color-secondary);
-  width: 93%;
+  width: 91%;
   padding: 0.3rem 0.6rem;
   border-radius: 2px;
 }
@@ -21,13 +21,33 @@
 }
 
 @media (min-width: 590px) {
-  /* .container {
-    justify-content: center;
-  } */
+  .container {
+    min-height: 100vh;
+    background-image: radial-gradient(
+      circle at top left,
+      var(--color-background) 0%,
+      rgb(41 243 226 / 11%) 30%,
+      rgb(240 22 22 / 8.2%) 50%,
+      rgb(229 243 39 / 9.6%) 70%,
+      var(--color-background)
+    );
+  }
+
+  .gameContainer {
+    display: grid;
+    justify-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 16rem));
+    row-gap: 2rem;
+    column-gap: 0.5rem;
+    padding: 0 4rem;
+  }
 
   .searchInput {
-    width: 35rem;
-    margin-bottom: 1rem;
+    width: 30rem;
+    max-height: 2rem;
+    margin-bottom: 1.2rem;
     justify-self: center;
   }
 }

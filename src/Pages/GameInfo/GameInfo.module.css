@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  padding-top: 4rem;
+  padding: 3.9rem 0;
   display: grid;
   justify-content: center;
 }
@@ -22,6 +22,14 @@
 
 .image {
   max-width: 100%;
+}
+
+.gameContainer {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-background)
+  );
 }
 
 .gameInfoContainer {
@@ -103,5 +111,11 @@
   .gameContainer {
     width: 550px;
     box-shadow: 0 1px 20px rgb(0 0 0 / 56.8%);
+  }
+}
+
+@media (min-width: 780px) {
+  .container {
+    padding: 3.9rem 0 1rem;
   }
 }

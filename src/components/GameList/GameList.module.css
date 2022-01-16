@@ -11,5 +11,6 @@
     justify-content: space-evenly;
     row-gap: 2rem;
     column-gap: 0.5rem;
+    padding: 0 4rem;
   }
 }

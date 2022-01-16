@@ -3,13 +3,55 @@
   margin: 1rem;
   min-width: 256px;
   max-width: 555px;
-  background: linear-gradient(
-    to left,
-    var(--color-secondary),
-    var(--color-background)
-  );
+  background: linear-gradient(to left, #2247690c, var(--color-background));
   position: relative;
   box-shadow: 0 1px 5px black;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.gameContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 2px 6px black;
+}
+
+.gameContainer::before {
+  content: '';
+  position: absolute;
+  width: 45rem;
+  height: 100%;
+  background: linear-gradient(to right, #0cf, #d400d4);
+  z-index: -1;
+  animation: animate 1s ease-in-out alternate infinite;
+  transition: all 1s;
+  opacity: 0;
+
+  /* visibility: hidden; */
+}
+
+.gameContainer::after {
+  content: '';
+  position: absolute;
+  offset: 2px;
+  z-index: -1;
+  background: var(--color-background);
+  visibility: hidden;
+}
+
+.gameContainer:hover::before,
+.gameContainer:hover::after {
+  visibility: visible;
+  opacity: 0.3;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-20rem);
+  }
 }
 
 .imageContainer {

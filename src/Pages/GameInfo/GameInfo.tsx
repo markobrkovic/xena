@@ -98,6 +98,7 @@ export default function GameInfo() {
             {buttonText}
           </button>
         </section>
+        <Line width="viewport" highestOpacityPoint="end" />
         <Title
           className={styles.gameSectionsTitle}
           title="About this game"
