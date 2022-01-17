@@ -53,12 +53,14 @@ export default function Game({
               : 'https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg'
           }`}
         />
-        <Title
-          className={styles.gameTitle}
-          title={`${name}`}
-          size="h2"
-          weight="light"
-        />
+        <div className={styles.gameTitleContainer}>
+          <Title
+            className={styles.gameTitle}
+            title={`${name}`}
+            size="h2"
+            weight="light"
+          />
+        </div>
       </div>
       <p className={styles.genre}>
         {genres ? genres[0].name : 'No genre available'}

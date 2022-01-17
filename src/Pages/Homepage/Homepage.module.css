@@ -23,14 +23,15 @@
 @media (min-width: 590px) {
   .container {
     min-height: 100vh;
-    background-image: radial-gradient(
+
+    /* background-image: radial-gradient(
       circle at top left,
       var(--color-background) 0%,
       rgb(41 243 226 / 11%) 30%,
       rgb(240 22 22 / 8.2%) 50%,
       rgb(229 243 39 / 9.6%) 70%,
       var(--color-background)
-    );
+    ); */
   }
 
   .gameContainer {
