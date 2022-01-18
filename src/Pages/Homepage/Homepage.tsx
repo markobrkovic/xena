@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import FeaturedGame from '../../components/FeaturedGame/FeaturedGame';
 import Game, { GameProps } from '../../components/Game/Game';
 import GameList from '../../components/GameList/GameList';
 import Navbar from '../../components/Navbar/Navbar';
@@ -13,7 +12,6 @@ export default function Homepage(): JSX.Element {
 
   let content;
   useEffect(() => {
-    // getDocuments().then(setDocuments);
     async function load() {
       const newGames = await fetchSearch(search);
       setGames(newGames);
@@ -22,7 +20,7 @@ export default function Homepage(): JSX.Element {
   }, [search]);
 
   if (search) {
-    content = games?.map((game) => (
+    const searchedGames = games?.map((game) => (
       <Game
         key={game.id}
         id={game.id}
@@ -34,13 +32,9 @@ export default function Homepage(): JSX.Element {
         release_dates={game.release_dates}
       />
     ));
+    content = <div className={styles.gameContainer}>{searchedGames}</div>;
   } else {
-    content = (
-      <div className={styles.gameContainer}>
-        <FeaturedGame />
-        <GameList />
-      </div>
-    );
+    content = <GameList />;
   }
 
   return (

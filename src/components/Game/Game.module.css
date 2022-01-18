@@ -1,32 +1,104 @@
 .gameContainer {
   display: grid;
   margin: 1rem;
+  min-width: 256px;
   max-width: 555px;
-  justify-content: center;
-  background: linear-gradient(
-    to left,
-    var(--color-secondary),
-    var(--color-background)
-  );
+  background: linear-gradient(to left, #224769, var(--color-background));
   position: relative;
+  box-shadow: 0 1px 5px black;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+.gameContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 2px 6px black;
+}
+
+.gameContainer::before {
+  content: '';
+  position: absolute;
+  width: 45rem;
+  height: 100%;
+  background: linear-gradient(to right, #0cf, #d400d4);
+  z-index: -1;
+  animation: animate 1s ease-in-out alternate infinite;
+  transition: all 1s;
+  opacity: 0;
+}
+
+.gameContainer::after {
+  content: '';
+  position: absolute;
+  offset: 2px;
+  z-index: -1;
+  background: var(--color-background);
+  visibility: hidden;
+}
+
+.gameTitleContainer {
+  box-shadow: 0 2px 2px black;
+  position: absolute;
+  padding: 0.4rem;
+  top: 1rem;
+  background: linear-gradient(to right, #224769, var(--color-background));
+  overflow: hidden;
+}
+
+.gameTitle {
+  font-size: var(--font-size-medium);
+  margin: 0;
+  position: relative;
+}
+
+.gameTitle::before {
+  content: '';
+  position: absolute;
+  top: -65%;
+  left: -20%;
+  width: 45rem;
+  height: 5rem;
+  background: linear-gradient(to right, #0cf, #d400d4);
+  z-index: 1;
+  animation: animate 1s ease-in-out alternate infinite;
+  transition: all 1s;
+  opacity: 0;
+}
+
+.gameTitle::after {
+  content: '';
+  position: relative;
+  z-index: 1;
+  background: var(--color-text);
+  visibility: hidden;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-20rem);
+  }
+}
+
+.gameContainer:hover::before,
+.gameContainer:hover::after,
+.gameContainer:hover .gameTitle::before,
+.gameContainer:hover .gameTitle::after {
+  visibility: visible;
+  opacity: 0.3;
 }
 
 .imageContainer {
   overflow: hidden;
+  height: max-content;
 }
 
 .image {
-  max-width: 100%;
-  object-fit: cover;
-}
-
-.gameTitle {
-  font-size: var(--font-size-large);
-  padding: 0.5rem 1rem;
-  box-shadow: 1px 4px 4px black;
-  position: absolute;
-  top: 0.1rem;
-  background-color: var(--color-background);
+  width: 100%;
+  overflow: hidden;
 }
 
 .genre {
@@ -58,4 +130,14 @@
 
 .moreInfoBtn:hover {
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .gameContainer {
+    margin: 0;
+  }
+
+  .image {
+    max-height: 135px;
+  }
 }

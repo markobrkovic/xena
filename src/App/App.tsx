@@ -15,7 +15,6 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/friends" element={<Friends />} />
       </Routes>
-      <nav></nav>
     </>
   );
 }

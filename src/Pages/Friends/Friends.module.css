@@ -1,16 +1,12 @@
 .container {
   width: 100%;
-  padding-top: 6.5rem;
+  padding: 5rem;
   display: grid;
 }
 
 .loading {
   align-self: center;
   justify-self: center;
-}
-
-.image {
-  max-width: 100%;
 }
 
 .addOrSearch {
@@ -21,8 +17,8 @@
 }
 
 .searchInput {
-  margin: 0.5rem 0 1rem 1.45rem;
-  width: 85%;
+  margin: 0.5rem 1.45rem 1rem;
+  width: 86%;
   background-color: var(--color-secondary);
   padding: 0.3rem 0.6rem;
   border-radius: 5px;
@@ -33,4 +29,29 @@
   font-size: var(--font-size-medium);
   font-weight: 100;
   opacity: 0.8;
+}
+
+@media (min-width: 560px) {
+  .friendsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));
+    justify-content: center;
+    justify-items: center;
+    gap: 1rem;
+  }
+
+  .addOrSearch {
+    justify-self: center;
+    margin: 0;
+  }
+
+  .searchInput {
+    width: 20rem;
+    margin: 1rem;
+    justify-self: center;
+  }
+
+  .searchInput::placeholder {
+    text-align: center;
+  }
 }

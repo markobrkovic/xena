@@ -1,13 +1,16 @@
 .container {
   display: grid;
+  justify-items: center;
   justify-content: center;
-  grid-template-rows: minmax(365px, 365px);
   width: 100%;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .container {
-    grid-template-columns: repeat(auto-fit, minmax(349px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 16rem));
+    justify-content: space-evenly;
+    row-gap: 2rem;
+    column-gap: 0.5rem;
+    padding: 0 4rem;
   }
 }

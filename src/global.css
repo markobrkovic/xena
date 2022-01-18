@@ -42,7 +42,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(185 185 185); /* color of the scroll thumb */
+  background-color: rgb(236 236 236); /* color of the scroll thumb */
   border-radius: 5px; /* roundness of the scroll thumb */
   border: 2px solid var(--color-background); /* creates padding around scroll thumb */
 }

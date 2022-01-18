@@ -12,6 +12,6 @@
 
 .pageTitle {
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 200;
   font-size: var(--font-size-large);
 }
