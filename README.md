@@ -4,7 +4,7 @@ An app for gamers as well as non-gamers intrested stepping into the gaming world
 You can also save the one's you like in your own wishlist. You can also add friends and view their wishlists.
 
 Here you can view and test the app:
-https://xena.herokuapp.com/
+https://xena-app.herokuapp.com/
 
 ## Installing / Getting started
 
