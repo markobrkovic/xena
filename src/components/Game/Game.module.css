@@ -46,7 +46,7 @@
 }
 
 .gameTitle {
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-medium);
   margin: 0;
   position: relative;
 }

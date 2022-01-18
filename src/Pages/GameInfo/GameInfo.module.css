@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  padding: 3.9rem 0;
+  padding: 3.5rem 0;
   display: grid;
   justify-content: center;
 }
@@ -102,6 +102,7 @@
 
 @media (min-width: 560px) {
   .container {
+    min-height: 100vh;
     background-image: radial-gradient(
       var(--color-primary),
       var(--color-background)

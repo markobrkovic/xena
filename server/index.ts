@@ -68,6 +68,8 @@ app.post('/api/friends/add', async (request, response) => {
   }
 });
 
+// Find a friend
+
 // Get Friends from user
 
 app.post('/api/friends', async (request, response) => {
@@ -94,7 +96,7 @@ app.post('/api/register', async (request, response) => {
 
   if (!isUserInDatabase) {
     userCollection.insertOne(addUser);
-    response.send(addUser.username + ' has been successfully added');
+    response.send('Your account has successfully been created');
   } else {
     response.status(404).send(addUser.username + ' is already in the database');
   }
@@ -220,7 +222,7 @@ app.post('/api/twitchgames/game', async (req, res) => {
   const response = await fetch('https://api.igdb.com/v4/games', {
     method: 'post',
     headers: options,
-    body: `fields *, genres.*, screenshots.*, websites.*, release_dates.*; where id = ${gameId.id}; limit 41;`,
+    body: `fields *, genres.*, screenshots.*, websites.*, release_dates.*; where id = ${gameId.id}; limit 52;`,
   })
     .then((res) => res.json())
     .catch((e) => {

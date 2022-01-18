@@ -10,7 +10,7 @@ export default function GameList() {
   useEffect(() => {
     async function getGames() {
       const games: number[] = [];
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 50; i++) {
         const value = Math.floor(Math.random() * 2000);
         if (!games.find((element) => element === value)) {
           games.push(value);

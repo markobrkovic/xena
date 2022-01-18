@@ -41,7 +41,7 @@
     width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 16rem));
     row-gap: 2rem;
-    column-gap: 0.5rem;
+    column-gap: 0.1rem;
     padding: 0 4rem;
   }
 
