@@ -95,8 +95,9 @@ app.post('/api/register', async (request, response) => {
   });
 
   if (!isUserInDatabase) {
-    userCollection.insertOne(addUser);
-    response.send('Your account has successfully been created');
+    const newUser = { ...addUser, games: [], friends: [] };
+    userCollection.insertOne(newUser);
+    response.send(addUser);
   } else {
     response.status(404).send(addUser.username + ' is already in the database');
   }
@@ -158,7 +159,7 @@ app.post('/api/wishlist', async (request, response) => {
 
 // Remove game from user's wishlist
 
-app.post('/api/wishlist', async (request, response) => {
+app.post('/api/wishlist/remove', async (request, response) => {
   const user = request.body;
   const userCollection = getUserCollection();
   const isUserInDatabase = await userCollection.findOne({
@@ -174,7 +175,7 @@ app.post('/api/wishlist', async (request, response) => {
     );
     const games = isUserInDatabase.games;
     if (isUserInDatabase.games && isGameInDatabase) {
-      games.pop(user.gameId);
+      games.slice(games.indexOf(user.gameId));
       newvalues = {
         $set: { games: games },
       };

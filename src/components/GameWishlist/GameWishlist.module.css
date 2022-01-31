@@ -1,18 +1,23 @@
+.container {
+  margin-bottom: 0.2rem;
+}
+
+.line {
+  width: 110%;
+  transform: translateX(-3rem);
+}
+
 .gameContainer {
   display: grid;
-  margin: 1rem;
-  max-width: 555px;
-  justify-content: center;
-  background: linear-gradient(
+  grid-template-columns: 30% 50% 20%;
+  margin-top: 0.2rem;
+
+  /* background: linear-gradient(
     to left,
     var(--color-secondary),
     var(--color-background)
-  );
+  ); */
   position: relative;
-}
-
-.imageContainer {
-  overflow: hidden;
 }
 
 .image {
@@ -22,52 +27,53 @@
 
 .gameTitle {
   font-size: var(--font-size-large);
-  padding: 0.5rem 1rem;
-  box-shadow: 1px 4px 4px black;
   position: absolute;
-  top: 0.1rem;
-  background-color: var(--color-background);
 }
 
+/* GENRE HIDDEN FOR MOBILE USERS */
 .genre {
-  margin: 0.5rem 1rem;
   width: fit-content;
   height: fit-content;
-  padding: 0.2rem 0.6rem;
-  font-size: var(--font-size-medium);
-  background-color: var(--color-quaternary);
+  position: absolute;
+  grid-column: 2/2;
+  justify-self: center;
+  align-self: flex-end;
+  padding: 0.2rem 0.4rem;
+  border: 2px solid rgb(255 255 255 / 65.1%);
+  border-radius: 0.5rem;
+  font-size: var(--font-size-small);
+  visibility: hidden;
 }
 
 .removeFromWishlist {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0.5rem 1rem;
+  margin: 0.4rem;
+  padding: 0.2rem 0.4rem;
+  min-width: 4rem;
+  max-width: 6rem;
+  height: 1.5rem;
+  align-self: center;
   border: none;
   text-transform: uppercase;
   background-color: tomato;
-  font-size: var(--font-size-small);
+  font-size: 0.6rem;
   color: var(--color-text);
-}
-
-.description {
-  font-size: var(--font-size-medium);
-  font-weight: 300;
-  text-align: center;
-  margin: 1rem 2rem 0;
-  max-width: 30rem;
-}
-
-.lineOne {
-  margin: auto;
 }
 
 .moreInfoBtn {
   place-self: center;
-  margin: 0.5rem;
   padding: 0.5rem 1rem;
 }
 
 .moreInfoBtn:hover {
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .gameContainer {
+    max-width: 768px;
+  }
+
+  .genre {
+    visibility: visible;
+  }
 }

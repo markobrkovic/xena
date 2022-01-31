@@ -3,7 +3,7 @@
 }
 
 .dropdown__button {
-  background-color: var(--color-background);
+  background-color: transparent;
   color: var(--color-background);
   height: 3rem;
   width: 3rem;
@@ -27,8 +27,10 @@
     var(--color-background),
     var(--color-background)
   );
+  opacity: 0;
   z-index: 100;
-  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1),
+    opacity 0.1s ease-in-out;
 }
 
 .dropdown__nav {
@@ -49,6 +51,7 @@
   transform: translate(-50%, -50%);
   list-style: none;
   text-align: center;
+  visibility: hidden;
   width: 100%;
 }
 
@@ -83,11 +86,16 @@
 
 .dropdown__checkbox:checked ~ .dropdown__background {
   transform: scale(80);
+  opacity: 1;
 }
 
 .dropdown__checkbox:checked ~ .dropdown__nav {
   opacity: 1;
   width: 100%;
+}
+
+.dropdown__checkbox:checked ~ .dropdown__nav .dropdown__list {
+  visibility: visible;
 }
 
 /* ICON */

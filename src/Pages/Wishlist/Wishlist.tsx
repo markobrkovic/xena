@@ -5,6 +5,7 @@ import fetchWishlist from '../../utils/fetchWishlist';
 import fetchMultipleGames from '../../utils/fetchMultipleGames';
 import Navbar from '../../components/Navbar/Navbar';
 import GameWishlist from '../../components/GameWishlist/GameWishlist';
+import SearchInput from '../../components/SearchInput/SearchInput';
 
 export default function Wishlist() {
   const [games, setGames] = useState<null | GameProps[]>(null);
@@ -27,7 +28,11 @@ export default function Wishlist() {
   let content;
 
   if (!games) {
-    content = <p className={styles.loading}>Loading...</p>;
+    content = (
+      <div className={styles.loadingScreen}>
+        <div className={styles.loadingIcon}></div>
+      </div>
+    );
   } else {
     content = games?.map((game) => (
       <GameWishlist
@@ -46,7 +51,16 @@ export default function Wishlist() {
   return (
     <div className={styles.container}>
       <Navbar title="Wishlist" />
-      <div className={styles.wishlistContainer}>{content}</div>
+      <div className={styles.wishlistContainer}>
+        <SearchInput
+          text="Search by name"
+          className={styles.searchInput}
+          onSearch={function (title: string): void {
+            throw new Error('Function not implemented.');
+          }}
+        />
+        {content}
+      </div>
     </div>
   );
 }

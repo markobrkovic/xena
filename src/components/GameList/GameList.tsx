@@ -8,7 +8,7 @@ export default function GameList() {
   const [games, setGames] = useState<null | GameProps[]>(null);
 
   useEffect(() => {
-    async function getGames() {
+    function getGames() {
       const games: number[] = [];
       for (let i = 0; i < 50; i++) {
         const value = Math.floor(Math.random() * 2000);
@@ -18,8 +18,10 @@ export default function GameList() {
           continue;
         }
       }
-      const gameData = await fetchMultipleGames(games);
-      setGames(gameData);
+      setTimeout(async () => {
+        const gameData = await fetchMultipleGames(games);
+        setGames(gameData);
+      }, 690);
     }
 
     getGames();
@@ -28,7 +30,11 @@ export default function GameList() {
   let content;
 
   if (!games) {
-    content = <p>Loading...</p>;
+    content = (
+      <div className={styles.loadingScreen}>
+        <div className={styles.loadingIcon}></div>
+      </div>
+    );
   } else {
     content = games?.map((game) => (
       <Game

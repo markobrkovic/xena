@@ -13,8 +13,8 @@ export type FriendProps = {
 export default function Friends() {
   const [friends, setFriends] = useState<null | FriendProps[]>(null);
   const [search, setSearch] = useState<null | string>(null);
-  // const username = localStorage.getItem('username');
-  const username = 'Marko';
+  const username = localStorage.getItem('username');
+
   console.log(search);
   let content;
   useEffect(() => {
@@ -27,7 +27,13 @@ export default function Friends() {
   }, []);
 
   if (!friends) {
-    content = <p className={styles.loading}>Loading...</p>;
+    content = (
+      <div className={styles.loadingScreen}>
+        <div className={styles.loadingIcon}></div>
+      </div>
+    );
+  } else if (friends.length < 1) {
+    content = <p className={styles.loading}>No friends</p>;
   } else {
     content = friends?.map((friend) => (
       <Friend

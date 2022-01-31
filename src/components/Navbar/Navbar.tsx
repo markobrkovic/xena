@@ -11,7 +11,7 @@ export default function Navbar({ title }: NavbarProps) {
     <nav className={styles.navbar}>
       <h2 className={styles.pageTitle}>{title}</h2>
       <Dropdown />
-      <Line width={'half'} highestOpacityPoint={'middle'} />
+      {/* <Line width={'half'} highestOpacityPoint={'middle'} /> */}
     </nav>
   );
 }

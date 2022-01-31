@@ -23,7 +23,7 @@
   background: linear-gradient(
     to right,
     transparent,
-    var(--color-text) 45% 55%,
+    var(--color-text) 35% 45%,
     transparent
   );
 }
