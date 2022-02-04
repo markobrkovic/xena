@@ -7,14 +7,14 @@
 .searchInput {
   margin: 0.5rem 1rem 0;
   justify-self: center;
-  background-color: var(--color-secondary);
+  background-color: var(--color-text);
   width: 91%;
   padding: 0.3rem 0.6rem;
   border-radius: 2px;
 }
 
 .searchInput::placeholder {
-  color: var(--color-text);
+  color: var(--color-background);
   font-size: var(--font-size-medium);
   font-weight: 100;
   opacity: 0.8;

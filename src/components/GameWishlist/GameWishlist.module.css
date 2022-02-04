@@ -2,11 +2,6 @@
   margin-bottom: 0.2rem;
 }
 
-.line {
-  width: 110%;
-  transform: translateX(-3rem);
-}
-
 .gameContainer {
   display: grid;
   grid-template-columns: 30% 50% 20%;
@@ -22,7 +17,22 @@
 
 .image {
   max-width: 100%;
+  margin-left: 0.5rem;
+  opacity: 0.8;
   object-fit: cover;
+}
+
+.imageFade {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  opacity: 1;
+  width: 35%;
+  background-image: linear-gradient(
+    to top,
+    var(--color-background),
+    transparent
+  );
 }
 
 .gameTitle {
@@ -32,16 +42,17 @@
 
 /* GENRE HIDDEN FOR MOBILE USERS */
 .genre {
+  position: absolute;
+  font-size: var(--font-size-small);
+  grid-column: 2/2;
   width: fit-content;
   height: fit-content;
-  position: absolute;
-  grid-column: 2/2;
   justify-self: center;
   align-self: flex-end;
   padding: 0.2rem 0.4rem;
   border: 2px solid rgb(255 255 255 / 65.1%);
   border-radius: 0.5rem;
-  font-size: var(--font-size-small);
+  opacity: 0.9;
   visibility: hidden;
 }
 
@@ -59,6 +70,10 @@
   color: var(--color-text);
 }
 
+.removeFromWishlist:hover {
+  cursor: pointer;
+}
+
 .moreInfoBtn {
   place-self: center;
   padding: 0.5rem 1rem;
@@ -68,9 +83,14 @@
   cursor: pointer;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 730px) {
   .gameContainer {
-    max-width: 768px;
+    max-width: 730px;
+  }
+
+  .line {
+    width: 110%;
+    transform: translateX(-3rem);
   }
 
   .genre {

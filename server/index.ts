@@ -202,7 +202,8 @@ app.post('/api/wishlist/library', async (request, response) => {
   const isUserInDatabase = await userCollection.findOne({
     username: user.username,
   });
-  if (isUserInDatabase && isUserInDatabase.games) {
+  if (isUserInDatabase && isUserInDatabase.games.length > 0) {
+    console.log('mrs');
     response.send(isUserInDatabase.games);
   } else {
     response.status(404).send(user);

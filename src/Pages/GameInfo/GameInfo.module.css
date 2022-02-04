@@ -1,8 +1,9 @@
 .container {
   width: 100%;
-  padding: 3.4rem 0;
+  padding-top: 3.4rem;
   display: grid;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .loadingScreen {
@@ -113,7 +114,7 @@
   grid-column: 3 / span 3;
   justify-self: flex-end;
   margin: 0.5rem;
-  padding: 0.2rem 0.4rem;
+  padding: 0.3rem 0.6rem;
   width: fit-content;
   border: none;
   text-transform: uppercase;
@@ -123,10 +124,12 @@
 }
 
 .removeFromWishlist {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0.5rem 1rem;
+  grid-row: 2;
+  grid-column: 3 / span 3;
+  justify-self: flex-end;
+  margin: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  width: fit-content;
   border: none;
   text-transform: uppercase;
   background-color: tomato;
@@ -134,7 +137,8 @@
   color: var(--color-text);
 }
 
-.addToWishlist:hover {
+.addToWishlist:hover,
+.removeFromWishlist:hover {
   cursor: pointer;
 }
 
@@ -152,7 +156,6 @@
 
 @media (min-width: 560px) {
   .container {
-    min-height: 100vh;
     background-image: radial-gradient(
       var(--color-primary),
       var(--color-background)

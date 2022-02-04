@@ -49,17 +49,16 @@ export default function Game({
         highestOpacityPoint="middle--secondary"
       />
       <section className={styles.gameContainer}>
-        <div className={styles.imageContainer}>
-          <Image
-            className={styles.image}
-            size="screenshot_med"
-            image_id={`${
-              screenshots
-                ? screenshots[0].image_id
-                : 'https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg'
-            }`}
-          />
-        </div>
+        <Image
+          className={styles.image}
+          size="screenshot_med"
+          image_id={`${
+            screenshots
+              ? screenshots[0].image_id
+              : 'https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg'
+          }`}
+        />
+        <div className={styles.imageFade}></div>
         <Button
           onClick={() => navigate(`/game/${id}`)}
           className={styles.moreInfoBtn}

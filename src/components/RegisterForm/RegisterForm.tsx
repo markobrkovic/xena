@@ -24,6 +24,7 @@ export default function RegisterForm() {
             if (username != null && password != null) {
               const auth = await userRegisterAPI({ username, password });
               if (auth) {
+                navigate(`/`);
                 console.log('Registration Complete');
               } else {
                 console.log('User already in use');

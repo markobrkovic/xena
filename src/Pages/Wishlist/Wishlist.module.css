@@ -1,21 +1,3 @@
-.container {
-  width: 100%;
-  display: grid;
-}
-
-.searchInput {
-  width: 10rem;
-  padding: 0.2rem 0.3rem;
-  margin: 0 0 0.5rem 0.5rem;
-}
-
-.wishlistContainer {
-  display: grid;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  justify-items: flex-start;
-}
-
 .loadingScreen {
   display: grid;
   place-items: center;
@@ -69,8 +51,57 @@
   }
 }
 
+.container {
+  width: 100%;
+  display: grid;
+  position: relative;
+}
+
+.wishlistContainer {
+  display: grid;
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  justify-items: flex-start;
+}
+
+.searchInput {
+  width: 13rem;
+  padding: 0.2rem 0.3rem;
+  margin: 0 0 0.5rem 0.6rem;
+  border-radius: 2px;
+  grid-column: 1;
+  grid-row: 1;
+  background-color: white;
+}
+
+.filterButton {
+  padding: 0.2rem 0.3rem;
+  margin: 0 0 0.5rem 8rem;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+}
+
 @media (min-width: 768px) {
   .wishlistContainer {
     justify-items: center;
+  }
+
+  .searchInput {
+    width: 13rem;
+    padding: 0.25rem 0.35rem;
+    margin: 0 7rem 1rem 0;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .filterButton {
+    padding: 0.2rem 0.3rem;
+    margin: 0 0 1rem 11rem;
+    border-radius: 2px;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
   }
 }
