@@ -7,11 +7,24 @@
   width: 100%;
   align-items: center;
   padding: 0.2rem;
-  background-color: var(--color-background);
+  box-shadow: 0 1px 200px rgb(6 9 19);
+  background-color: #0c1a27cc;
+  backdrop-filter: blur(5px);
 }
 
 .pageTitle {
+  text-overflow: ellipsis;
+  max-width: 10rem;
+  overflow: hidden;
+  white-space: nowrap;
   text-transform: uppercase;
   font-weight: 200;
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-medium);
+  padding-top: 0.2rem;
+}
+
+@media (min-width: 768px) {
+  .pageTitle {
+    max-width: 11rem;
+  }
 }

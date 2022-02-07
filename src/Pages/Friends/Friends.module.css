@@ -4,9 +4,57 @@
   display: grid;
 }
 
-.loading {
-  align-self: center;
+.loadingScreen {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--color-background);
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+}
+
+.loadingIcon {
+  display: grid;
+  align-items: center;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.loadingIcon::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  width: 5rem;
+  border-radius: 0;
+  height: 1.2rem;
+  background-color: var(--color-background);
+  animation: loading 1s infinite;
+}
+
+.loadingIcon::after {
+  content: '';
   justify-self: center;
+  position: absolute;
+  width: 2rem;
+  border-radius: 50%;
+  height: 2rem;
+  background-color: var(--color-background);
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .addOrSearch {
@@ -19,13 +67,14 @@
 .searchInput {
   margin: 0.5rem 1.45rem 1rem;
   width: 86%;
-  background-color: var(--color-secondary);
+  background-color: var(--color-text);
+  border: 1px solid rgb(0 0 0);
   padding: 0.3rem 0.6rem;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .searchInput::placeholder {
-  color: var(--color-text);
+  color: var(--color-background);
   font-size: var(--font-size-medium);
   font-weight: 100;
   opacity: 0.8;

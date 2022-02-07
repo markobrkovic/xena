@@ -47,7 +47,11 @@ export default function GameInfo() {
   }, [isWishlist]);
 
   if (!game) {
-    content = <p className={styles.loading}>Loading...</p>;
+    content = (
+      <div className={styles.loadingScreen}>
+        <div className={styles.loadingIcon}></div>
+      </div>
+    );
   } else {
     if (game?.storyline) {
       summary = <p className={styles.description}>{game?.storyline}</p>;
@@ -62,7 +66,11 @@ export default function GameInfo() {
           <Image
             className={styles.image}
             size="screenshot_med"
-            image_id={`${game?.screenshots[0].image_id}`}
+            image_id={`${
+              game.screenshots
+                ? game.screenshots[0].image_id
+                : 'https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg'
+            }`}
           />
           <div className={styles.gameInfoContainer}>
             <Title
@@ -77,26 +85,26 @@ export default function GameInfo() {
               size="h4"
               weight="thin"
             />
+            <span className={styles.genre}>
+              {game?.genres ? game?.genres[0].name : 'No genre available'}
+            </span>
+            <button
+              onClick={async () => {
+                setIsWishlist(isWishlist ? false : true);
+                if (!isWishlist) {
+                  setButtonStyle('addToWishlist');
+                  setButtonText('Add to Wishlist');
+                } else {
+                  setButtonStyle('removeFromWishlist');
+                  setButtonText('Remove from Wishlist');
+                }
+                await addToWishlist({ username: username, gameId: game?.id });
+              }}
+              className={`${styles[buttonStyle]}`}
+            >
+              {buttonText}
+            </button>
           </div>
-          <span className={styles.genre}>
-            {game?.genres ? game?.genres[0].name : 'No genre available'}
-          </span>
-          <button
-            onClick={async () => {
-              setIsWishlist(isWishlist ? false : true);
-              if (!isWishlist) {
-                setButtonStyle('addToWishlist');
-                setButtonText('Add to Wishlist');
-              } else {
-                setButtonStyle('removeFromWishlist');
-                setButtonText('Remove from Wishlist');
-              }
-              await addToWishlist({ username: username, gameId: game?.id });
-            }}
-            className={`${styles[buttonStyle]}`}
-          >
-            {buttonText}
-          </button>
         </section>
         <Line width="viewport" highestOpacityPoint="end" />
         <Title
@@ -114,7 +122,7 @@ export default function GameInfo() {
   return (
     <>
       <div className={styles.container}>
-        <Navbar title={`${game ? game.name.slice(0, 10) : 'Loading'}...`} />
+        <Navbar title={`${game ? game.name.slice(0, 25) : 'Loading'}`} />
         {content}
       </div>
     </>

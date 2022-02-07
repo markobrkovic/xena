@@ -7,14 +7,15 @@
 .searchInput {
   margin: 0.5rem 1rem 0;
   justify-self: center;
-  background-color: var(--color-secondary);
+  background-color: var(--color-text);
+  color: var(--color-background);
   width: 91%;
   padding: 0.3rem 0.6rem;
   border-radius: 2px;
 }
 
 .searchInput::placeholder {
-  color: var(--color-text);
+  color: var(--color-background);
   font-size: var(--font-size-medium);
   font-weight: 100;
   opacity: 0.8;
@@ -27,7 +28,7 @@
     /* background-image: radial-gradient(
       circle at top left,
       var(--color-background) 0%,
-      rgb(41 243 226 / 11%) 30%,
+      var(--color-background) 30%,
       rgb(240 22 22 / 8.2%) 50%,
       rgb(229 243 39 / 9.6%) 70%,
       var(--color-background)

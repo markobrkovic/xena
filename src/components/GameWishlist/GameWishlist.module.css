@@ -1,73 +1,99 @@
+.container {
+  margin-bottom: 0.2rem;
+}
+
 .gameContainer {
   display: grid;
-  margin: 1rem;
-  max-width: 555px;
-  justify-content: center;
-  background: linear-gradient(
+  grid-template-columns: 30% 50% 20%;
+  margin-top: 0.2rem;
+
+  /* background: linear-gradient(
     to left,
     var(--color-secondary),
     var(--color-background)
-  );
+  ); */
   position: relative;
-}
-
-.imageContainer {
-  overflow: hidden;
 }
 
 .image {
   max-width: 100%;
+  margin-left: 0.5rem;
+  opacity: 0.8;
   object-fit: cover;
+}
+
+.imageFade {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  opacity: 1;
+  width: 33%;
+  background-image: linear-gradient(
+    to top,
+    var(--color-background),
+    transparent
+  );
 }
 
 .gameTitle {
   font-size: var(--font-size-large);
-  padding: 0.5rem 1rem;
-  box-shadow: 1px 4px 4px black;
   position: absolute;
-  top: 0.1rem;
-  background-color: var(--color-background);
 }
 
+/* GENRE HIDDEN FOR MOBILE USERS */
 .genre {
-  margin: 0.5rem 1rem;
+  position: absolute;
+  font-size: var(--font-size-small);
+  grid-column: 2/2;
   width: fit-content;
   height: fit-content;
-  padding: 0.2rem 0.6rem;
-  font-size: var(--font-size-medium);
-  background-color: var(--color-quaternary);
+  justify-self: center;
+  align-self: flex-end;
+  padding: 0.2rem 0.4rem;
+  border: 2px solid rgb(255 255 255 / 65.1%);
+  border-radius: 0.5rem;
+  opacity: 0.9;
+  visibility: hidden;
 }
 
 .removeFromWishlist {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  padding: 0.5rem 1rem;
+  margin: 0.4rem;
+  padding: 0.2rem 0.4rem;
+  min-width: 4rem;
+  max-width: 6rem;
+  height: 1.5rem;
+  align-self: center;
   border: none;
   text-transform: uppercase;
   background-color: tomato;
-  font-size: var(--font-size-small);
+  font-size: 0.6rem;
   color: var(--color-text);
 }
 
-.description {
-  font-size: var(--font-size-medium);
-  font-weight: 300;
-  text-align: center;
-  margin: 1rem 2rem 0;
-  max-width: 30rem;
-}
-
-.lineOne {
-  margin: auto;
+.removeFromWishlist:hover {
+  cursor: pointer;
 }
 
 .moreInfoBtn {
   place-self: center;
-  margin: 0.5rem;
   padding: 0.5rem 1rem;
 }
 
 .moreInfoBtn:hover {
   cursor: pointer;
+}
+
+@media (min-width: 730px) {
+  .gameContainer {
+    max-width: 730px;
+  }
+
+  .line {
+    width: 110%;
+    transform: translateX(-3rem);
+  }
+
+  .genre {
+    visibility: visible;
+  }
 }

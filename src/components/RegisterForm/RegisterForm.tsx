@@ -1,33 +1,20 @@
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import styles from './LoginForm.module.css';
-import { useEffect, useState } from 'react';
-import userAuthAPI from '../../utils/userAuthAPI';
+import styles from './RegisterForm.module.css';
+import { useState } from 'react';
+import userRegisterAPI from '../../utils/userRegisterAPI';
 import { useNavigate } from 'react-router-dom';
 import Line from '../design-components/Line/Line';
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const [username, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const navigate = useNavigate();
 
-  const setCookieFunction = (value: string) => {
-    localStorage.setItem('username', value);
-    setTimeout(() => {
-      navigate('/homepage');
-    }, 600);
-  };
-
-  useEffect(() => {
-    console.log(localStorage);
-    localStorage.clear();
-    console.log(localStorage);
-  }, []);
-
   return (
     <div className={styles.container}>
       <div className={styles.form}>
-        <h1 className={styles.formHeader}>Login to XENA </h1>
+        <h1 className={styles.formHeader}>Register to XENA </h1>
         <Line width="viewport" highestOpacityPoint="middle" />
         <form
           className={styles.formLogin}
@@ -35,11 +22,15 @@ export default function LoginForm() {
             event.preventDefault();
             console.log({ username, password });
             if (username != null && password != null) {
-              const auth = await userAuthAPI({ username, password });
-              console.log('Hello ' + auth.username);
-              setCookieFunction(auth.username);
+              const auth = await userRegisterAPI({ username, password });
+              if (auth) {
+                navigate(`/`);
+                console.log('Registration Complete');
+              } else {
+                console.log('User already in use');
+              }
             } else {
-              console.log('Nope');
+              console.log('Something went wrong');
             }
           }}
         >
@@ -63,18 +54,18 @@ export default function LoginForm() {
             backgroundColor="background--contrast"
           />
           <Button
-            text="Login"
+            text="Register"
             color="text"
             backgroundColor="quaternary-light"
             size="small"
           />
         </form>
         <section className={styles.formRegister}>
-          <span>Don&apos;t have an account?</span>
+          <span>Already have an account?</span>
 
           <Button
-            onClick={() => navigate(`/register`)}
-            text="Register"
+            onClick={() => navigate(`/`)}
+            text="Login"
             color="text"
             backgroundColor="quaternary-light"
             size="small"

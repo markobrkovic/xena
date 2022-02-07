@@ -40,7 +40,11 @@ export default function Homepage(): JSX.Element {
   return (
     <div className={styles.container}>
       <Navbar title="Homepage" />
-      <SearchInput className={styles.searchInput} onSearch={setSearch} />
+      <SearchInput
+        text="Search"
+        className={styles.searchInput}
+        onSearch={setSearch}
+      />
       {content}
     </div>
   );
