@@ -8,6 +8,7 @@
   margin: 0.5rem 1rem 0;
   justify-self: center;
   background-color: var(--color-text);
+  color: var(--color-background);
   width: 91%;
   padding: 0.3rem 0.6rem;
   border-radius: 2px;
