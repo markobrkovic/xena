@@ -13,7 +13,18 @@
 }
 
 .pageTitle {
+  text-overflow: ellipsis;
+  max-width: 10rem;
+  overflow: hidden;
+  white-space: nowrap;
   text-transform: uppercase;
   font-weight: 200;
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-medium);
+  padding-top: 0.2rem;
+}
+
+@media (min-width: 768px) {
+  .pageTitle {
+    max-width: 11rem;
+  }
 }

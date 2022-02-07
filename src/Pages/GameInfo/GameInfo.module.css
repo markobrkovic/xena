@@ -152,6 +152,8 @@
   font-size: var(--font-size-medium);
   font-weight: 300;
   margin: 1rem;
+  padding: 0.5rem 0;
+  line-height: 1.4;
 }
 
 @media (min-width: 560px) {

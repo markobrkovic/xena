@@ -122,7 +122,7 @@ export default function GameInfo() {
   return (
     <>
       <div className={styles.container}>
-        <Navbar title={`${game ? game.name.slice(0, 10) : 'Loading'}...`} />
+        <Navbar title={`${game ? game.name.slice(0, 25) : 'Loading'}`} />
         {content}
       </div>
     </>
