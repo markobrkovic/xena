@@ -6,7 +6,6 @@ import fetchMultipleGames from '../../utils/fetchMultipleGames';
 import Navbar from '../../components/Navbar/Navbar';
 import GameWishlist from '../../components/GameWishlist/GameWishlist';
 import SearchInput from '../../components/SearchInput/SearchInput';
-import Line from '../../components/design-components/Line/Line';
 import Button from '../../components/Button/Button';
 
 export default function Wishlist() {
