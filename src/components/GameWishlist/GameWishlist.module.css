@@ -35,11 +35,6 @@
   );
 }
 
-.gameTitle {
-  font-size: var(--font-size-large);
-  position: absolute;
-}
-
 /* GENRE HIDDEN FOR MOBILE USERS */
 .genre {
   position: absolute;
@@ -75,12 +70,15 @@
 }
 
 .moreInfoBtn {
-  place-self: center;
   padding: 0.5rem 1rem;
 }
 
 .moreInfoBtn:hover {
   cursor: pointer;
+}
+
+.dissapear {
+  display: none !important;
 }
 
 @media (min-width: 730px) {
@@ -94,6 +92,7 @@
   }
 
   .genre {
+    font-size: var(--font-size-medium);
     visibility: visible;
   }
 }

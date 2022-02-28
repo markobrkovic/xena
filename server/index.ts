@@ -174,8 +174,9 @@ app.post('/api/wishlist/remove', async (request, response) => {
       (id: number) => id === user.gameId
     );
     const games = isUserInDatabase.games;
-    if (isUserInDatabase.games && isGameInDatabase) {
-      games.slice(games.indexOf(user.gameId));
+    console.log('isGame ' + isGameInDatabase);
+    if (isGameInDatabase) {
+      games.splice(games.indexOf(isGameInDatabase));
       newvalues = {
         $set: { games: games },
       };
@@ -186,7 +187,7 @@ app.post('/api/wishlist/remove', async (request, response) => {
     }
     userCollection.updateOne(myquery, newvalues, function (err, _res) {
       if (err) throw err;
-      console.log('1 document updated');
+      console.log('Game removed from wishlist');
     });
     response.send(user);
   } else {
@@ -206,7 +207,7 @@ app.post('/api/wishlist/library', async (request, response) => {
     console.log('mrs');
     response.send(isUserInDatabase.games);
   } else {
-    response.status(404).send(user);
+    response.status(404).send([]);
   }
 });
 

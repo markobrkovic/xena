@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import Line from '../design-components/Line/Line';
 import type { GameProps } from '../Game/Game';
+import removeFromWishlist from '../../utils/removeFromWishlist';
 
 export default function Game({ id, name, screenshots, genres }: GameProps) {
   const navigate = useNavigate();
@@ -37,7 +38,23 @@ export default function Game({ id, name, screenshots, genres }: GameProps) {
         <p className={styles.genre}>
           {genres ? genres[0].name : 'No genre available'}
         </p>
-        <button className={styles.removeFromWishlist}>Remove</button>
+        <button
+          className={styles.removeFromWishlist}
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+            event.preventDefault();
+
+            const button: HTMLButtonElement = event.currentTarget;
+            console.log(button);
+            console.log(button.parentElement);
+            button.parentElement?.classList.add(styles.dissapear);
+            removeFromWishlist({
+              username: localStorage.getItem('username'),
+              gameId: id,
+            });
+          }}
+        >
+          Remove
+        </button>
       </section>
     </div>
   );

@@ -18,10 +18,13 @@ export default function Wishlist() {
       const userWishlist = await fetchWishlist({
         username: user,
       });
-      console.log('this ' + userWishlist);
-      const games = await fetchMultipleGames(userWishlist);
-      console.log(games);
-      setGames(games);
+      if (userWishlist.length > 0) {
+        console.log('DAAAA ' + userWishlist);
+        const games = await fetchMultipleGames(userWishlist);
+        setGames(games);
+      } else {
+        setGames([]);
+      }
     }
 
     getGames();
@@ -35,6 +38,8 @@ export default function Wishlist() {
         <div className={styles.loadingIcon}></div>
       </div>
     );
+  } else if (games.length < 1) {
+    content = <p className={styles.emptyWishlist}>Your wishlist is empty</p>;
   } else if (search) {
     if (games.filter((game) => game.name.includes(search))) {
       const searched = games.filter((game) =>
@@ -55,8 +60,6 @@ export default function Wishlist() {
     } else {
       content = <p>Oops, nothing found</p>;
     }
-  } else if (games.length === 1 && games[0].name === 'No games') {
-    content = <p>Empty</p>;
   } else {
     content = games?.map((game) => (
       <GameWishlist
@@ -76,18 +79,20 @@ export default function Wishlist() {
     <div className={styles.container}>
       <Navbar title="Wishlist" />
       <div className={styles.wishlistContainer}>
-        <SearchInput
-          text="Search by name"
-          className={styles.searchInput}
-          onSearch={setSearch}
-        />
-        <Button
-          className={styles.filterButton}
-          text={'Filter by'}
-          color={'text'}
-          backgroundColor={'secondary'}
-          size={'small'}
-        />
+        <div className={styles.searchAndFilter}>
+          <SearchInput
+            text="Search by name"
+            className={styles.searchInput}
+            onSearch={setSearch}
+          />
+          <Button
+            className={styles.filterButton}
+            text={'Filter by'}
+            color={'text'}
+            backgroundColor={'secondary'}
+            size={'small'}
+          />
+        </div>
         {content}
       </div>
     </div>
