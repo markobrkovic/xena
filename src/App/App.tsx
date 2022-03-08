@@ -5,6 +5,7 @@ import Friends from '../Pages/Friends/Friends';
 import GameInfo from '../Pages/GameInfo/GameInfo';
 import Homepage from '../Pages/Homepage/Homepage';
 import Wishlist from '../Pages/Wishlist/Wishlist';
+import Welcome from '../Pages/Welcome/Welcome';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/welcome" element={<Welcome />} />
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/game/:id" element={<GameInfo />} />
         <Route path="/wishlist" element={<Wishlist />} />

@@ -4,7 +4,6 @@ import styles from './LoginForm.module.css';
 import { useEffect, useState } from 'react';
 import userAuthAPI from '../../utils/userAuthAPI';
 import { useNavigate } from 'react-router-dom';
-import Line from '../design-components/Line/Line';
 
 export default function LoginForm() {
   const [username, setUserName] = useState<string>('');
@@ -14,21 +13,18 @@ export default function LoginForm() {
   const setCookieFunction = (value: string) => {
     localStorage.setItem('username', value);
     setTimeout(() => {
-      navigate('/homepage');
-    }, 600);
+      navigate('/welcome');
+    }, 200);
   };
 
   useEffect(() => {
-    console.log(localStorage);
     localStorage.clear();
-    console.log(localStorage);
   }, []);
 
   return (
     <div className={styles.container}>
       <div className={styles.form}>
         <h1 className={styles.formHeader}>Login to XENA </h1>
-        <Line width="viewport" highestOpacityPoint="middle" />
         <form
           className={styles.formLogin}
           onSubmit={async (event) => {
@@ -47,7 +43,7 @@ export default function LoginForm() {
           <Input
             onChange={setUserName}
             className={styles.formLogin_input}
-            placeholder="Enter username"
+            placeholder=""
             color="text--contrast"
             size="medium"
             backgroundColor="background--contrast"
@@ -57,7 +53,7 @@ export default function LoginForm() {
             onChange={setPassword}
             type="password"
             className={styles.formLogin_input}
-            placeholder="Enter password"
+            placeholder=""
             color="text--contrast"
             size="medium"
             backgroundColor="background--contrast"
