@@ -10,6 +10,7 @@
   background-color: var(--color-text);
   color: var(--color-background);
   width: 91%;
+  max-width: 555px;
   padding: 0.3rem 0.6rem;
   border-radius: 2px;
 }
@@ -21,7 +22,7 @@
   opacity: 0.8;
 }
 
-@media (min-width: 590px) {
+@media (min-width: 768px) {
   .container {
     min-height: 100vh;
 
@@ -48,7 +49,7 @@
 
   .searchInput {
     width: 30rem;
-    max-height: 2rem;
+    height: fit-content;
     margin-bottom: 1.2rem;
     justify-self: center;
   }

@@ -62,7 +62,7 @@
 .dropdown__link:link,
 .dropdown__link:visited {
   display: inline-block;
-  font-size: var(--font-size-large);
+  font-size: 1.4rem;
   font-weight: 200;
   padding: 0.5rem 1rem;
   color: var(--color-text);

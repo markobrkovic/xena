@@ -77,11 +77,15 @@
 }
 
 .filterButton {
-  padding: 0.2rem 0.3rem;
-  margin: 0 0 0.7rem 8rem;
+  padding: 0.4rem 0.3rem;
+  margin-left: 0.2rem;
   grid-column: 1;
   grid-row: 1;
   justify-self: center;
+}
+
+.emptyWishlist {
+  padding-top: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -92,14 +96,12 @@
   .searchInput {
     width: 13rem;
     padding: 0.25rem 0.35rem;
-    margin: 0 7rem 1rem 0;
     grid-column: 1;
     grid-row: 1;
   }
 
   .filterButton {
-    padding: 0.2rem 0.3rem;
-    margin: 0 0 1rem 11rem;
+    margin-left: 0.3rem;
     border-radius: 2px;
     grid-column: 1;
     grid-row: 1;

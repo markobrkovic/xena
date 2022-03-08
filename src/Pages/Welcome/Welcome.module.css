@@ -1,9 +1,3 @@
-.container {
-  width: 100%;
-  padding-top: 5rem;
-  display: grid;
-}
-
 .loadingScreen {
   display: grid;
   place-items: center;
@@ -57,50 +51,58 @@
   }
 }
 
-.addOrSearch {
-  margin: 0 0 0 1.45rem;
-  text-transform: uppercase;
+.container {
+  display: grid;
+  align-content: center;
+  padding: 4rem;
+  width: 100%;
+  animation: 0.6s fadeIn;
+  background-image: url('../../components/images/xenaDesktop.png');
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  color: var(--color-text);
+  font-size: 3rem;
   font-weight: 200;
-  font-size: var(--font-size-medium);
 }
 
-.searchInput {
-  margin: 0.5rem 1.45rem 1rem;
-  width: 86%;
-  background-color: var(--color-text);
-  border: 1px solid rgb(0 0 0);
-  padding: 0.3rem 0.6rem;
-  border-radius: 2px;
+.btnContainer {
+  display: flex;
+  gap: 0.4rem;
 }
 
-.searchInput::placeholder {
+.btn {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1rem;
+  width: 9rem;
+  height: 4rem;
+  border: none;
   color: var(--color-background);
-  font-size: var(--font-size-medium);
-  font-weight: 100;
-  opacity: 0.8;
+  background-color: rgb(255 255 255 / 86.3%);
+  transition: all 0.3s;
 }
 
-@media (min-width: 560px) {
-  .friendsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));
-    justify-content: center;
-    justify-items: center;
-    gap: 1rem;
-  }
+.btn:hover {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transform: scale(1.05) translateY(-2px);
+}
 
-  .addOrSearch {
-    justify-self: center;
-    margin: 0;
-  }
-
-  .searchInput {
-    width: 20rem;
-    margin: 1rem;
-    justify-self: center;
-  }
-
-  .searchInput::placeholder {
-    text-align: center;
+@media (min-width: 768px) {
+  .container {
+    min-height: 100vh;
   }
 }

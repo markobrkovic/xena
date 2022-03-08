@@ -15,7 +15,6 @@ export default function RegisterForm() {
     <div className={styles.container}>
       <div className={styles.form}>
         <h1 className={styles.formHeader}>Register to XENA </h1>
-        <Line width="viewport" highestOpacityPoint="middle" />
         <form
           className={styles.formLogin}
           onSubmit={async (event) => {

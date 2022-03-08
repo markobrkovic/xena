@@ -21,7 +21,7 @@ export default function GameList() {
       setTimeout(async () => {
         const gameData = await fetchMultipleGames(games);
         setGames(gameData);
-      }, 650);
+      }, 800);
     }
 
     getGames();

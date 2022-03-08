@@ -3,12 +3,11 @@ export type WishlistProps = {
   gameId: number | undefined;
 };
 
-export default async function addToWishlist({
+export default async function removeFromWishlist({
   username,
   gameId,
 }: WishlistProps) {
   console.log('Wishlist');
-  console.log(JSON.stringify({ username, gameId }));
   const response = await fetch('/api/wishlist/remove', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
